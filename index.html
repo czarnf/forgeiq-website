@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Talos Intelligent Systems — Batch Margin Intelligence for Manufacturers</title>
+  <meta name="description" content="Talos analyses your last 30–60 days of production data and surfaces exactly where margin is lost — batch by batch, in £. 7-Day Audit from £2,500. No integration required.">
+  <link rel="canonical" href="https://talosintelligent.co.uk">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Talos Intelligent Systems — Batch Margin Intelligence for Manufacturers">
+  <meta property="og:description" content="Find exactly where your batch margin is going. In 7 days, using data you already have. No software installation. No integration. Just answers in £.">
+  <meta property="og:url" content="https://talosintelligent.co.uk">
+  <meta property="og:image" content="https://talosintelligent.co.uk/assets/og-image.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Talos Intelligent Systems — Batch Margin Intelligence for Manufacturers">
+  <meta name="twitter:description" content="Find exactly where your batch margin is going. 7-Day Batch Margin Audit from £2,500. No integration required.">
+  <meta name="twitter:image" content="https://talosintelligent.co.uk/assets/og-image.png">
+
+  <!-- Cal.com popup embed -->
+  <script>
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal; let ar = arguments;
+        if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+        if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+    const TALOS_CAL_LINK = 'talossystems/15min';
+    Cal("init", { origin: "https://cal.com" });
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Talos Intelligent Systems",
+    "url": "https://talosintelligent.co.uk",
+    "description": "Batch margin intelligence for UK manufacturers. 7-Day Batch Margin Audit from £2,500. No integration required.",
+    "sameAs": ["https://www.linkedin.com/in/emmanuelchiefson/"]
+  }
+  </script>
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS — OPTION C: INDIGO + ELECTRIC AMBER
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      /* Base surfaces */
+      --ink:      #0C1117;
+      --paper:    #FBFAF7;
+      --paper-2:  #F1EEE7;
+      --card:     #FFFFFF;
+      --card-dark:#0f1829;
+
+      /* Text — dark sections */
+      --text-on-dark:    #FFFFFF;
+      --muted-on-dark:   rgba(255,255,255,0.65);
+      --muted-2-on-dark: rgba(255,255,255,0.38);
+
+      /* Text — light sections */
+      --text:    #1A1E23;
+      --muted:   #5C656F;
+      --muted-2: #8A939C;
+
+      /* Indigo — brand / intelligence signal */
+      --indigo:        #6366F1;
+      --indigo-light:  #A5B4FC;
+      --indigo-dark:   #4F46E5;
+      --indigo-tint:   #EEF2FF;
+      --indigo-border: rgba(99,102,241,0.25);
+
+      /* Amber — action / quantified value */
+      --amber:       #F59E0B;
+      --amber-light: #FCD34D;
+      --amber-dark:  #D97706;
+      --amber-tint:  #FFFBEB;
+
+      /* Borders */
+      --border-dark:    rgba(255,255,255,0.10);
+      --border-dark-h:  rgba(255,255,255,0.22);
+      --border-light:   rgba(26,30,35,0.10);
+      --border-light-h: rgba(26,30,35,0.22);
+      --border-amber:   rgba(245,158,11,0.25);
+      --border-indigo:  rgba(99,102,241,0.25);
+
+      /* Spacing */
+      --s-xs:  4px;
+      --s-sm:  8px;
+      --s-md:  16px;
+      --s-lg:  24px;
+      --s-xl:  48px;
+      --s-2xl: 80px;
+
+      /* Shape */
+      --r:      12px;
+      --r-sm:   6px;
+      --r-lg:   20px;
+      --r-full: 999px;
+
+      /* Motion */
+      --t:      0.2s ease;
+      --t-slow: 0.4s ease;
+
+      /* Layout */
+      --max-w:         1100px;
+      --max-w-content: 720px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ═══════════════════════════════════════════════════════════
+       ACCESSIBILITY
+    ═══════════════════════════════════════════════════════════ */
+    :focus-visible {
+      outline: 2px solid var(--indigo);
+      outline-offset: 3px;
+      border-radius: var(--r-sm);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .rv { opacity: 1 !important; transform: none !important; }
+      #hero-bg { display: none !important; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       UTILITIES
+    ═══════════════════════════════════════════════════════════ */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .section    { padding: var(--s-2xl) 0; }
+    .section-sm { padding: 64px 0; }
+
+    .slbl {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 14px;
+    }
+
+    .stitle {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .sdesc {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 580px;
+    }
+
+    /* Dark-section overrides for shared typography */
+    .dark-section .slbl  { color: var(--indigo-light); }
+    .dark-section .stitle { color: var(--text-on-dark); }
+    .dark-section .sdesc  { color: var(--muted-on-dark); }
+
+    /* ═══════════════════════════════════════════════════════════
+       SCROLL ANIMATIONS
+    ═══════════════════════════════════════════════════════════ */
+    .rv {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .rv.visible  { opacity: 1; transform: translateY(0); }
+    .rv-d1 { transition-delay: 0.08s; }
+    .rv-d2 { transition-delay: 0.16s; }
+    .rv-d3 { transition-delay: 0.24s; }
+    .rv-d4 { transition-delay: 0.32s; }
+
+    /* ═══════════════════════════════════════════════════════════
+       BUTTONS
+    ═══════════════════════════════════════════════════════════ */
+    .btn-p, .btn-s, .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: var(--r-sm);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      line-height: 1;
+      transition: all var(--t);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    /* Amber — primary CTA (works on both dark and light) */
+    .btn-p {
+      background: var(--amber);
+      color: var(--ink);
+      border: 1px solid transparent;
+    }
+    .btn-p:hover {
+      background: var(--amber-dark);
+      transform: translateY(-1px);
+    }
+    .btn-p:active { transform: scale(0.98); }
+
+    /* Ghost — secondary on dark sections */
+    .btn-s {
+      background: transparent;
+      color: var(--text-on-dark);
+      border: 1px solid var(--border-dark-h);
+    }
+    .btn-s:hover {
+      border-color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* Outline — secondary on light sections */
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-light-h);
+    }
+    .btn-outline:hover {
+      border-color: var(--indigo);
+      color: var(--indigo);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════════════════════════ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(12,17,23,0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-on-dark);
+      letter-spacing: -0.01em;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--indigo-light); }
+
+    .nav-links { display: none; align-items: center; gap: 28px; }
+    .nav-links a {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted-on-dark);
+      transition: color var(--t);
+    }
+    .nav-links a:hover { color: var(--text-on-dark); }
+
+    .nav-cta { padding: 10px 20px; font-size: 0.875rem; }
+
+    .nav-burger {
+      background: none; border: none; padding: 8px;
+      display: flex; flex-direction: column; gap: 5px; cursor: pointer;
+    }
+    .nav-burger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--muted-on-dark); border-radius: 2px; transition: all var(--t);
+    }
+    .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-drawer {
+      display: none;
+      background: var(--ink);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 8px 24px 24px;
+    }
+    .nav-drawer.open { display: block; }
+    .nav-drawer a {
+      display: block; padding: 13px 0;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.95rem; font-weight: 500;
+      color: var(--muted-on-dark);
+      border-bottom: 1px solid var(--border-dark);
+      transition: color var(--t);
+    }
+    .nav-drawer a:last-of-type { border-bottom: none; }
+    .nav-drawer a:hover { color: var(--text-on-dark); }
+    .nav-drawer .btn-p { margin-top: 16px; width: 100%; justify-content: center; }
+
+    @media (min-width: 768px) {
+      .nav-links  { display: flex; }
+      .nav-burger { display: none; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       HERO — DARK + CANVAS
+    ═══════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--ink);
+      overflow: hidden;
+      padding: 120px 0 100px;
+    }
+
+    #hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(12,17,23,0.58);
+      z-index: 1;
+    }
+
+    .hero > .container { position: relative; z-index: 2; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 10px;
+      border-radius: var(--r-full);
+      border: 1px solid var(--border-indigo);
+      background: rgba(99,102,241,0.08);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--indigo-light);
+      margin-bottom: 28px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--indigo-light);
+      flex-shrink: 0;
+    }
+
+    .hero-h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(2.6rem, 7vw, 4.8rem);
+      font-weight: 400;
+      line-height: 1.06;
+      color: var(--text-on-dark);
+      letter-spacing: -0.025em;
+      margin-bottom: 6px;
+    }
+    .hero-h1 .hl { color: var(--amber); }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.12rem);
+      color: var(--muted-on-dark);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-top: 22px;
+      margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 52px;
+    }
+
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 20px; }
+    .trust-item {
+      display: flex; align-items: center; gap: 7px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted-2-on-dark);
+    }
+    .trust-item::before {
+      content: '';
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      border: 1px solid var(--border-indigo);
+      background: rgba(99,102,241,0.10);
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23A5B4FC' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 9px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PROBLEM SECTION — LIGHT (paper-2)
+    ═══════════════════════════════════════════════════════════ */
+    .pain { background: var(--paper-2); }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    .pain-card {
+      background: var(--card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r);
+      padding: 28px 28px 32px;
+      transition: border-color var(--t), transform var(--t);
+    }
+    .pain-card:hover {
+      border-color: var(--border-indigo);
+      transform: translateY(-2px);
+    }
+
+    .pain-stat {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.6rem;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .pain-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .pain-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
+
+    @media (min-width: 600px)  { .pain-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1024px) { .pain-grid { grid-template-columns: repeat(4,1fr); } }
+
+    /* ═══════════════════════════════════════════════════════════
+       HOW IT WORKS — LIGHT (paper)
+    ═══════════════════════════════════════════════════════════ */
+    .how { background: var(--paper); }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 56px;
+    }
+
+    .step-num {
+      display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--indigo-tint);
+      border: 1px solid var(--border-indigo);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem; font-weight: 400;
+      color: var(--indigo);
+      margin-bottom: 18px; flex-shrink: 0;
+    }
+
+    .step-title { font-size: 1.12rem; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+    .step-body  { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+
+    .step-tag {
+      display: inline-block;
+      padding: 4px 12px; border-radius: var(--r-full);
+      background: var(--indigo-tint); border: 1px solid var(--border-indigo);
+      font-size: 0.72rem; font-weight: 400;
+      color: var(--indigo);
+      font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.04em;
+    }
+
+    @media (min-width: 768px) { .how-steps { grid-template-columns: repeat(3,1fr); gap: 32px; } }
+
+    /* ═══════════════════════════════════════════════════════════
+       THE SYSTEM — DARK (ink)
+    ═══════════════════════════════════════════════════════════ */
+    .system { background: var(--ink); }
+
+    .system-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    .sys-card {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--r);
+      padding: 32px;
+      position: relative; overflow: hidden;
+      transition: border-color var(--t), box-shadow var(--t);
+    }
+    .sys-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--indigo), transparent 60%);
+      opacity: 0; transition: opacity var(--t);
+    }
+    .sys-card:hover { border-color: var(--border-dark-h); box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
+    .sys-card:hover::after { opacity: 1; }
+
+    .sys-stage {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted-2-on-dark); margin-bottom: 10px;
+    }
+
+    .sys-title { font-size: 1.05rem; font-weight: 500; color: var(--text-on-dark); margin-bottom: 6px; }
+
+    .sys-price {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.55rem;
+      color: var(--amber-light);
+      margin-bottom: 16px; line-height: 1.2;
+    }
+
+    .sys-body  { font-size: 0.875rem; color: var(--muted-on-dark); line-height: 1.7; margin-bottom: 16px; }
+    .sys-role  { font-size: 0.78rem; color: var(--muted-2-on-dark); font-style: italic; padding-top: 14px; border-top: 1px solid var(--border-dark); }
+
+    @media (min-width: 600px)  { .system-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1024px) { .system-grid { grid-template-columns: repeat(4,1fr); } }
+
+    /* ═══════════════════════════════════════════════════════════
+       ENTRY POINT — LIGHT (paper)
+    ═══════════════════════════════════════════════════════════ */
+    .sprint-focus { background: var(--paper); }
+
+    .sprint-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .sprint-list { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+
+    .sprint-item { display: flex; gap: 16px; align-items: flex-start; }
+
+    .sprint-icon {
+      width: 36px; height: 36px; border-radius: var(--r-sm);
+      background: var(--indigo-tint); border: 1px solid var(--border-indigo);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+      color: var(--indigo); font-size: 0.85rem;
+      font-family: 'IBM Plex Mono', monospace; font-weight: 400;
+    }
+
+    .sprint-item-title { font-size: 0.95rem; font-weight: 500; color: var(--text); margin-bottom: 5px; }
+    .sprint-item-body  { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
+
+    .roi-card {
+      background: var(--card-dark);
+      border: 1px solid var(--border-amber);
+      border-radius: var(--r);
+      padding: 32px; box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+
+    .roi-head {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--amber-light); margin-bottom: 22px;
+    }
+
+    .roi-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--border-dark);
+    }
+    .roi-row:last-of-type { border-bottom: none; }
+
+    .roi-label { font-size: 0.875rem; color: var(--muted-on-dark); flex: 1; line-height: 1.4; }
+    .roi-label small { display: block; font-size: 0.75rem; color: var(--muted-2-on-dark); margin-top: 2px; }
+
+    .roi-val {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.2rem; color: var(--amber-light);
+      text-align: right; white-space: nowrap;
+    }
+
+    .roi-note {
+      margin-top: 20px; padding: 14px 16px;
+      background: rgba(245,158,11,0.07);
+      border: 1px solid var(--border-amber);
+      border-radius: var(--r-sm);
+      font-size: 0.8rem; color: var(--muted-on-dark);
+      font-style: italic; text-align: center; line-height: 1.6;
+    }
+
+    .roi-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; justify-content: center; }
+
+    @media (min-width: 900px) { .sprint-layout { grid-template-columns: 1fr 1fr; gap: 88px; } }
+
+    /* ═══════════════════════════════════════════════════════════
+       CASE EVIDENCE — LIGHT (paper-2)
+    ═══════════════════════════════════════════════════════════ */
+    .evidence { background: var(--paper-2); }
+
+    .evidence-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 14px; margin-top: 48px;
+    }
+
+    .ev-card {
+      background: var(--card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r);
+      padding: 28px 28px 32px;
+      transition: border-color var(--t);
+    }
+    .ev-card:hover { border-color: var(--border-indigo); }
+
+    .ev-co {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--muted-2); margin-bottom: 10px;
+    }
+
+    .ev-problem { font-size: 1rem; font-weight: 500; color: var(--text); margin-bottom: 12px; line-height: 1.4; }
+    .ev-body    { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+
+    .ev-numbers {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      padding-top: 16px; border-top: 1px solid var(--border-light);
+    }
+
+    .ev-num { display: flex; flex-direction: column; gap: 3px; }
+    .ev-num strong {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.4rem; color: var(--amber); line-height: 1;
+    }
+    .ev-num span {
+      font-size: 0.68rem; color: var(--muted-2);
+      text-transform: uppercase; letter-spacing: 0.07em;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    @media (min-width: 768px) { .evidence-grid { grid-template-columns: repeat(3,1fr); } }
+
+    /* ═══════════════════════════════════════════════════════════
+       FAQ — LIGHT (paper)
+    ═══════════════════════════════════════════════════════════ */
+    .faq { background: var(--paper); }
+
+    .faq-list {
+      margin-top: 48px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+
+    .faq-item { border-bottom: 1px solid var(--border-light); }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-q {
+      width: 100%; background: none; border: none;
+      padding: 22px 24px; text-align: left;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      font-size: 0.95rem; font-weight: 500; color: var(--text);
+      transition: background var(--t); cursor: pointer;
+    }
+    .faq-q:hover { background: var(--paper-2); }
+
+    .faq-arrow {
+      color: var(--indigo); font-size: 1.2rem;
+      transition: transform var(--t); flex-shrink: 0; line-height: 1;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s ease;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding: 0 24px 22px; }
+    .faq-a p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PLATFORM VISION SECTION — LIGHT (paper-2)
+    ═══════════════════════════════════════════════════════════ */
+    .vision-section { background: var(--paper-2); }
+
+    .vision-timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 56px;
+    }
+
+    .vt-track {
+      display: none; /* shown on desktop */
+    }
+
+    .vt-item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 0 24px;
+      padding-bottom: 48px;
+      position: relative;
+    }
+    .vt-item:last-child { padding-bottom: 0; }
+
+    /* vertical connector line */
+    .vt-item::before {
+      content: '';
+      position: absolute;
+      top: 22px; left: 9px;
+      width: 2px;
+      bottom: 0;
+      background: linear-gradient(to bottom, var(--border-light), transparent);
+    }
+    .vt-item:last-child::before { display: none; }
+
+    .vt-dot {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      margin-top: 2px;
+      flex-shrink: 0;
+      border: 2px solid transparent;
+      position: relative; z-index: 1;
+    }
+    .vt-dot.active {
+      background: var(--indigo);
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 4px var(--indigo-tint);
+    }
+    .vt-dot.soon {
+      background: var(--paper-2);
+      border-color: var(--indigo);
+    }
+    .vt-dot.future {
+      background: var(--paper-2);
+      border-color: var(--border-light-h);
+    }
+
+    .vt-period {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--muted-2); margin-bottom: 8px;
+    }
+
+    .vt-title { font-size: 1.15rem; font-weight: 500; color: var(--text); margin-bottom: 12px; }
+
+    .vt-body { font-size: 0.875rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+
+    .vt-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .vt-chip {
+      display: inline-block;
+      padding: 4px 12px; border-radius: var(--r-full);
+      font-size: 0.72rem; font-weight: 400;
+      font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.04em;
+    }
+    .vt-chip.active {
+      background: var(--indigo-tint); border: 1px solid var(--border-indigo); color: var(--indigo);
+    }
+    .vt-chip.soon {
+      background: transparent; border: 1px solid var(--border-indigo); color: var(--indigo);
+      opacity: 0.72;
+    }
+    .vt-chip.future {
+      background: transparent; border: 1px solid var(--border-light-h); color: var(--muted-2);
+      opacity: 0.72;
+    }
+
+    .vision-statement {
+      margin-top: 56px; padding: 40px 40px 36px;
+      border: 1px solid var(--border-light);
+      border-left: 3px solid var(--indigo);
+      border-radius: 0 var(--r) var(--r) 0;
+      background: var(--card);
+    }
+
+    .vs-quote {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+      line-height: 1.6; color: var(--text);
+      font-style: italic; margin-bottom: 16px;
+    }
+
+    .vs-attr {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--indigo);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       FINAL CTA — DARK (ink)
+    ═══════════════════════════════════════════════════════════ */
+    .final-cta { background: var(--ink); }
+
+    .cta-box {
+      max-width: 680px; margin: 0 auto;
+      background: var(--card-dark);
+      border: 1px solid var(--border-amber);
+      border-radius: var(--r-lg);
+      padding: clamp(40px,6vw,72px) clamp(28px,5vw,60px);
+      text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .cta-box .stitle { margin-bottom: 14px; }
+    .cta-box .sdesc  { max-width: 100%; margin: 0 auto 36px; }
+    .cta-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .cta-small { margin-top: 18px; font-size: 0.78rem; color: var(--muted-2-on-dark); font-family: 'IBM Plex Mono', monospace; }
+
+    /* ═══════════════════════════════════════════════════════════
+       FOOTER — DARK (ink)
+    ═══════════════════════════════════════════════════════════ */
+    .footer {
+      background: var(--ink);
+      border-top: 1px solid var(--border-dark);
+      padding: 44px 0;
+    }
+
+    .footer-top { display: flex; flex-direction: column; gap: 20px; }
+
+    .footer-logo {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--text-on-dark); margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--indigo-light); }
+
+    .footer-tagline { font-size: 0.82rem; color: var(--muted-2-on-dark); line-height: 1.6; }
+
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 16px 28px; }
+    .footer-nav a {
+      font-size: 0.82rem; color: var(--muted-2-on-dark); transition: color var(--t);
+    }
+    .footer-nav a:hover { color: var(--text-on-dark); }
+
+    .footer-bottom {
+      margin-top: 32px; padding-top: 20px;
+      border-top: 1px solid var(--border-dark);
+      display: flex; flex-wrap: wrap; gap: 12px;
+      justify-content: space-between; align-items: center;
+    }
+
+    .footer-copy  { font-size: 0.75rem; color: var(--muted-2-on-dark); }
+    .footer-legal { display: flex; gap: 16px; }
+    .footer-legal a {
+      font-size: 0.75rem; color: var(--muted-2-on-dark); transition: color var(--t);
+    }
+    .footer-legal a:hover { color: var(--muted-on-dark); }
+
+    @media (min-width: 768px) {
+      .footer-top { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       ROI GUARANTEE CALLOUT (how-it-works section)
+    ═══════════════════════════════════════════════════════════ */
+    .guarantee-card {
+      margin-top: 56px;
+      padding: 28px 32px;
+      background: var(--amber-tint);
+      border: 1px solid rgba(245,158,11,0.3);
+      border-radius: var(--r);
+    }
+    .guarantee-card p {
+      font-size: 0.95rem; color: var(--text); line-height: 1.7;
+    }
+    .guarantee-card strong { color: var(--amber-dark); }
+
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════════════════ -->
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+
+      <a href="#hero" class="nav-logo" aria-label="Talos Intelligent Systems homepage">
+        Talos<span>.</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#system">The System</a></li>
+        <li><a href="#vision">Platform</a></li>
+        <li><a href="#evidence">Results</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <a href="#" class="btn-p nav-cta" onclick="Cal('modal',{calLink:TALOS_CAL_LINK});return false;">Book a Call</a>
+
+      <button class="nav-burger" id="navBurger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+
+    <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+      <a href="#how-it-works">How It Works</a>
+      <a href="#system">The System</a>
+      <a href="#vision">Platform</a>
+      <a href="#evidence">Results</a>
+      <a href="#faq">FAQ</a>
+      <a href="#" class="btn-p" onclick="Cal('modal',{calLink:TALOS_CAL_LINK});return false;">Book a Margin Clarity Call</a>
+    </div>
+  </nav>
+</header>
+
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO — DARK + CANVAS MOTION
+═══════════════════════════════════════════════════════════ -->
+<section id="hero" class="hero" aria-labelledby="hero-h1">
+  <canvas id="hero-bg" aria-hidden="true"></canvas>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="container">
+
+    <div class="hero-badge rv">Batch Margin Intelligence · UK Manufacturers</div>
+
+    <h1 class="hero-h1 rv rv-d1" id="hero-h1">
+      Your production data<br>
+      knows where the margin went.<br>
+      <span class="hl">We find it.</span>
+    </h1>
+
+    <p class="hero-sub rv rv-d2">
+      Most manufacturing margin problems are information problems. The data to solve them already exists — in your ERP exports, your supplier invoices, your team's institutional knowledge. Talos connects it, quantifies what it costs you in £, and delivers findings in 7 days. No integration. No IT involvement.
+    </p>
+
+    <div class="hero-actions rv rv-d3">
+      <a href="#" class="btn-p" onclick="Cal('modal',{calLink:TALOS_CAL_LINK});return false;">Book a Margin Clarity Call →</a>
+      <a href="#how-it-works" class="btn-s">See how it works</a>
+    </div>
+
+    <div class="hero-trust rv rv-d4">
+      <div class="trust-item">From £2,500</div>
+      <div class="trust-item">Findings verifiable to source data</div>
+      <div class="trust-item">Report in 7 days</div>
+      <div class="trust-item">No integration required</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROBLEM — LIGHT
+═══════════════════════════════════════════════════════════ -->
+<section id="pain" class="section pain" aria-labelledby="pain-title">
+  <div class="container">
+
+    <span class="slbl rv">01 / The Problem</span>
+    <h2 class="stitle rv" id="pain-title">The margin your ERP records but never shows you</h2>
+    <p class="sdesc rv">Most manufacturers think they know their batch margin. They're estimating. The Talos Audit tells you the exact number — and precisely where it's going.</p>
+
+    <div class="pain-grid">
+
+      <article class="pain-card rv rv-d1">
+        <div class="pain-stat" aria-hidden="true">8–15%</div>
+        <h3 class="pain-title">Ingredient cost creep</h3>
+        <p class="pain-body">Ingredient prices change weekly. Most SMEs reprice their recipes quarterly at best. The gap between what you planned to spend and what you actually paid compounds silently across every batch you run.</p>
+      </article>
+
+      <article class="pain-card rv rv-d2">
+        <div class="pain-stat" aria-hidden="true">3–12%</div>
+        <h3 class="pain-title">Yield variance uncaptured</h3>
+        <p class="pain-body">Every batch that produces less than planned is a loss nobody measures. Most manufacturers track planned yield. They rarely compare it to actual yield per run — and never quantify the cumulative £ impact.</p>
+      </article>
+
+      <article class="pain-card rv rv-d3">
+        <div class="pain-stat" aria-hidden="true">£20k–£100k</div>
+        <h3 class="pain-title">Ghost stock draining cash</h3>
+        <p class="pain-body">Capital tied up in ingredients with no active job allocation. Expiring batches. Over-ordered lines that never move. Most MDs know it's there — nobody has quantified it in £ and matched it back to the production schedule.</p>
+      </article>
+
+      <article class="pain-card rv rv-d4">
+        <div class="pain-stat" aria-hidden="true">1 in 3</div>
+        <h3 class="pain-title">Batches with unrecorded variance</h3>
+        <p class="pain-body">Roughly a third of production runs in a typical batch manufacturer have a material deviation from plan — over-portioning, line inefficiency, substituted ingredients. Almost none of these are costed and reported to the MD.</p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     HOW IT WORKS — LIGHT
+═══════════════════════════════════════════════════════════ -->
+<section id="how-it-works" class="section how" aria-labelledby="how-title">
+  <div class="container">
+
+    <span class="slbl rv">02 / How It Works</span>
+    <h2 class="stitle rv" id="how-title">Three steps. No integration. No IT involvement.</h2>
+    <p class="sdesc rv">You export a file. We do the analysis. You receive a board-ready report that tells you exactly where the money is going — in £.</p>
+
+    <div class="how-steps">
+
+      <div class="step rv rv-d1">
+        <div class="step-num" aria-hidden="true">01</div>
+        <h3 class="step-title">Send us your data</h3>
+        <p class="step-body">Export your last 30–60 days of batch production and purchase data from your ERP — Sage 50, Sage 200, Access, or Excel. Three clicks. Send via our secure ProtonDrive link. No software installation. No IT team required. If you can't export in a structured format, we provide a simple intake template.</p>
+        <div class="step-tag">Day 0 · 30 minutes of your time</div>
+      </div>
+
+      <div class="step rv rv-d2">
+        <div class="step-num" aria-hidden="true">02</div>
+        <h3 class="step-title">We run the analysis</h3>
+        <p class="step-body">Our data pipeline processes your export off-site — automatically mapping your columns, normalising formats, and calculating price variance, yield variance, and usage variance per batch. Every deviation from plan is found and quantified in £. You do nothing while this happens.</p>
+        <div class="step-tag">Days 1–5 · Zero client involvement</div>
+      </div>
+
+      <div class="step rv rv-d3">
+        <div class="step-num" aria-hidden="true">03</div>
+        <h3 class="step-title">You receive the Talos Health Report</h3>
+        <p class="step-body">A board-ready PDF report delivered in a 45-minute video call. Executive summary, batch-by-batch variance table, top loss drivers with exact £ values, specific and costed recommendations. Every number traces back to your own data — not industry averages, not estimates. You can act on it the same week, and verify every figure with your own accountant if you want to.</p>
+        <div class="step-tag">Day 7 · Report + delivery call</div>
+      </div>
+
+    </div>
+
+    <div class="guarantee-card rv">
+      <p><strong>Our commitment.</strong> Every finding we surface is quantified in £ and arithmetically traceable from your own production data — your accountant can verify every figure independently. If the audit produces no material, actionable findings in your data, we refund the engagement fee. We don't promise a specific £ threshold, because results depend on what your production history contains. What we can tell you is that the manufacturers we've worked with have consistently identified savings that significantly exceeded the audit cost in the first quarter of acting on them. If we don't think your data will produce meaningful findings, we'll tell you before you commit.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     THE SYSTEM — DARK
+═══════════════════════════════════════════════════════════ -->
+<section id="system" class="section system dark-section" aria-labelledby="system-title">
+  <div class="container">
+
+    <span class="slbl rv">03 / The System</span>
+    <h2 class="stitle rv" id="system-title">Built for what your ERP cannot show you.</h2>
+    <p class="sdesc rv">The 7-day audit is the entry point. What follows is a full manufacturing intelligence layer — structured ERP data, supplier documents, institutional knowledge, and operational patterns, reconciled into one coherent picture of where margin goes and why.</p>
+
+    <div class="system-grid">
+
+      <article class="sys-card rv rv-d1">
+        <div class="sys-stage">Stage 01 · Now · Entry Point</div>
+        <h3 class="sys-title">7-Day Batch Margin Audit</h3>
+        <div class="sys-price">£2,500</div>
+        <p class="sys-body">Send us your ERP export. We calculate price, yield, and usage variance per batch and deliver a board-ready report within 7 days. Every finding quantified in £ and traceable to your source data. The start of a margin intelligence relationship — not a one-time report.</p>
+        <div class="sys-role">Every relationship starts here. No exceptions.</div>
+      </article>
+
+      <article class="sys-card rv rv-d2">
+        <div class="sys-stage">Stage 02 · Now · Ongoing Intelligence</div>
+        <h3 class="sys-title">Monthly Margin Monitoring</h3>
+        <div class="sys-price">£500–£800/mo</div>
+        <p class="sys-body">Monthly data refresh using your latest ERP export. Delta comparison against your audit baseline. Automated alerts for ingredient price spikes, yield drift, and ghost stock build-up. A 3-page monthly update delivered to your inbox. The audit, kept current.</p>
+        <div class="sys-role">Turns a one-time finding into a permanent margin guard.</div>
+      </article>
+
+      <article class="sys-card rv rv-d3">
+        <div class="sys-stage">Stage 03 · 2027 · Multi-Modal Intelligence</div>
+        <h3 class="sys-title">Supplier &amp; Knowledge Intelligence</h3>
+        <div class="sys-price">Coming 2027</div>
+        <p class="sys-body">Margin loss doesn't only live in your ERP. It hides in supplier invoices that were never reconciled against quoted prices, in quoting decisions made without visibility of real job cost, and in institutional expertise held in people's heads — knowledge that walks out the door when they do. Talos will ingest all of it.</p>
+        <div class="sys-role">Supplier price reconciliation · Job quoting intelligence · Knowledge capture</div>
+      </article>
+
+      <article class="sys-card rv rv-d4">
+        <div class="sys-stage">Stage 04 · 2028 · Tailored AI</div>
+        <h3 class="sys-title">Your Manufacturing Agent</h3>
+        <div class="sys-price">Coming 2028</div>
+        <p class="sys-body">A dedicated AI system trained on your ERP history, supplier relationships, operational knowledge base, and production patterns. Answers questions in plain language: why did margin drop in March, which ingredient is the biggest risk this quarter, what would switching suppliers cost you. Built from the data we've been processing since day one.</p>
+        <div class="sys-role">Every client gets one. No two are the same.</div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PLATFORM VISION — LIGHT (paper-2)
+═══════════════════════════════════════════════════════════ -->
+<section id="vision" class="section vision-section" aria-labelledby="vision-title">
+  <div class="container">
+
+    <span class="slbl rv">04 / The Vision</span>
+    <h2 class="stitle rv" id="vision-title">Manufacturing intelligence. Built in three layers.</h2>
+    <p class="sdesc rv">The audit solves the immediate problem. The platform solves the structural one. Most manufacturing businesses are sitting on years of data that has never been asked the right question. Talos is built to ask it — across every source of information the business already generates.</p>
+
+    <div class="vision-timeline rv">
+
+      <div class="vt-track" aria-hidden="true"></div>
+
+      <div class="vt-item rv rv-d1">
+        <div class="vt-dot active"></div>
+        <div class="vt-content">
+          <div class="vt-period">Year 1 — Now</div>
+          <h3 class="vt-title">Structured Data Intelligence</h3>
+          <p class="vt-body">ERP exports → variance engine → Health Report. The data your system already records, interrogated properly for the first time. Price variance, yield variance, usage variance — every batch, every deviation, quantified in £.</p>
+          <div class="vt-chips">
+            <span class="vt-chip active">7-Day Audit</span>
+            <span class="vt-chip active">Monthly Monitoring</span>
+            <span class="vt-chip active">Talos Health Report</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vt-item rv rv-d2">
+        <div class="vt-dot soon"></div>
+        <div class="vt-content">
+          <div class="vt-period">Year 2 — 2027</div>
+          <h3 class="vt-title">Multi-Modal Intelligence</h3>
+          <p class="vt-body">The second layer of margin loss doesn't live in your ERP. It lives in PDF supplier invoices that were never reconciled against quoted prices. In job quotes made without visibility of real cost history. In operational expertise held in people's heads that could walk out the door tomorrow. Talos will ingest all of it — automatically — and surface the £ impact alongside your ERP data.</p>
+          <div class="vt-chips">
+            <span class="vt-chip soon">Supplier Invoice Intelligence</span>
+            <span class="vt-chip soon">Quoting Intelligence</span>
+            <span class="vt-chip soon">Knowledge Capture</span>
+            <span class="vt-chip soon">Client-Facing Portal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vt-item rv rv-d3">
+        <div class="vt-dot future"></div>
+        <div class="vt-content">
+          <div class="vt-period">Year 3 — 2028</div>
+          <h3 class="vt-title">Tailored Manufacturing Agent</h3>
+          <p class="vt-body">Each client gets a dedicated AI system — trained on their ERP history, supplier network, operational knowledge base, and production patterns. It answers questions in plain language. It flags problems before they show up in the month-end. It knows your business because it has been learning from your data since day one. No two agents are the same, because no two manufacturers are the same.</p>
+          <div class="vt-chips">
+            <span class="vt-chip future">Custom Manufacturing Agent</span>
+            <span class="vt-chip future">Predictive Margin Alerts</span>
+            <span class="vt-chip future">Portfolio Intelligence</span>
+            <span class="vt-chip future">Multi-Site Scale</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="vision-statement rv">
+      <p class="vs-quote">"Most manufacturing margin problems are information problems. The data to solve them already exists — scattered across ERP systems, supplier emails, delivery notes, and the heads of experienced operators. Talos is built to connect all of it."</p>
+      <span class="vs-attr">— Talos Intelligent Systems</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     ENTRY POINT — LIGHT
+═══════════════════════════════════════════════════════════ -->
+<section id="sprint" class="section sprint-focus" aria-labelledby="sprint-title">
+  <div class="container">
+    <div class="sprint-layout">
+
+      <div class="sprint-content">
+
+        <span class="slbl rv">05 / The Entry Point</span>
+        <h2 class="stitle rv" id="sprint-title">The start of a margin growth partnership.</h2>
+        <p class="sdesc rv">The 7-Day Batch Margin Audit is not a consultancy report. It is the first data instrument in an ongoing strategic relationship — one that tells you exactly where margin is going today, then helps you systematically recover it over time. Every finding is in £. Every recommendation is specific and costed. And unlike a management consultant's assessment, every number is traceable to your own production data.</p>
+
+        <div class="sprint-list">
+
+          <div class="sprint-item rv rv-d1">
+            <div class="sprint-icon" aria-hidden="true">01</div>
+            <div>
+              <div class="sprint-item-title">You export and send your production data</div>
+              <p class="sprint-item-body">Three clicks from Sage 50, Sage 200, or equivalent ERP. CSV or Excel. Send via our ProtonDrive secure link. No site visit. No questionnaire. No preparation that consumes your team's day.</p>
+            </div>
+          </div>
+
+          <div class="sprint-item rv rv-d2">
+            <div class="sprint-icon" aria-hidden="true">02</div>
+            <div>
+              <div class="sprint-item-title">Our pipeline processes it automatically</div>
+              <p class="sprint-item-body">The Talos data pipeline normalises your export, maps column headers to canonical cost fields, and runs three variance calculations per batch: price variance, usage variance, and yield variance. All off-site. Zero client involvement.</p>
+            </div>
+          </div>
+
+          <div class="sprint-item rv rv-d3">
+            <div class="sprint-icon" aria-hidden="true">03</div>
+            <div>
+              <div class="sprint-item-title">Every deviation is found and costed in £</div>
+              <p class="sprint-item-body">The top loss drivers are ranked by £ impact. Not percentages. Not industry benchmarks. The actual £ figure your business lost across the audit period — per ingredient, per product line, per batch run.</p>
+            </div>
+          </div>
+
+          <div class="sprint-item rv rv-d4">
+            <div class="sprint-icon" aria-hidden="true">04</div>
+            <div>
+              <div class="sprint-item-title">Board-ready report delivered in 7 days</div>
+              <p class="sprint-item-body">Executive summary, batch variance table, top loss drivers in £, specific and costed recommendations. Delivered in a 45-minute video call. Written for an MD, not a consultant. Every number is traceable to your source data — you can act on it the same week and verify it independently.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="rv">
+        <div class="roi-card">
+          <div class="roi-head">Typical Audit ROI — Protein / Meat Processing</div>
+
+          <div class="roi-row">
+            <div class="roi-label">Audit investment</div>
+            <div class="roi-val">£2,500</div>
+          </div>
+          <div class="roi-row">
+            <div class="roi-label">
+              Chicken over-portioned by 8%
+              <small>Identified across 18 production batches</small>
+            </div>
+            <div class="roi-val">£6,300/mo</div>
+          </div>
+          <div class="roi-row">
+            <div class="roi-label">
+              Ingredient price drift
+              <small>Supplier increase not propagated to BOM</small>
+            </div>
+            <div class="roi-val">£2,100/mo</div>
+          </div>
+          <div class="roi-row">
+            <div class="roi-label">
+              Yield loss on Line 2 vs. Line 1
+              <small>Same product, 4% yield gap undetected</small>
+            </div>
+            <div class="roi-val">£1,800/mo</div>
+          </div>
+          <div class="roi-row">
+            <div class="roi-label">Total monthly savings identified</div>
+            <div class="roi-val">£10,200/mo</div>
+          </div>
+
+          <div class="roi-note">
+            The audit doesn't need to find £100k to justify it.<br>
+            It needs to find <strong>one number the MD can act on this week.</strong><br><br>
+            In the current environment — ingredient inflation, squeezed retailer margins, rising energy costs — manufacturers cannot afford to leave unquantified margin losses running for another quarter. This is not a nice-to-have. It is a strategic necessity.
+          </div>
+
+          <div class="roi-cta">
+            <a href="#" class="btn-p" onclick="Cal('modal',{calLink:TALOS_CAL_LINK});return false;">Book a Margin Clarity Call →</a>
+            <a href="#faq" class="btn-s">Common questions</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     CASE EVIDENCE — LIGHT
+═══════════════════════════════════════════════════════════ -->
+<section id="evidence" class="section evidence" aria-labelledby="evidence-title">
+  <div class="container">
+
+    <span class="slbl rv">06 / Case Evidence</span>
+    <h2 class="stitle rv" id="evidence-title">What the audit finds</h2>
+    <p class="sdesc rv">These scenarios are composites drawn from real UK SME food &amp; beverage manufacturing patterns. Every number is grounded in industry data and Talos audit methodology.</p>
+
+    <div class="evidence-grid">
+
+      <article class="ev-card rv rv-d1">
+        <div class="ev-co">Ready meals producer · 45 staff · £4.8m turnover · Bristol</div>
+        <h3 class="ev-problem">Ingredient cost running 11% above recipe standard</h3>
+        <p class="ev-body">Supplier prices had risen three times in 18 months. The bill of materials hadn't been updated. Every batch was being costed against a recipe that no longer reflected actual ingredient costs — the MD had no idea how much this was worth until the numbers were run.</p>
+        <div class="ev-numbers">
+          <div class="ev-num"><strong>£2,500</strong><span>Audit cost</span></div>
+          <div class="ev-num"><strong>£74k/yr</strong><span>Margin exposed</span></div>
+          <div class="ev-num"><strong>30×</strong><span>ROI multiple</span></div>
+        </div>
+      </article>
+
+      <article class="ev-card rv rv-d2">
+        <div class="ev-co">Chilled sauce manufacturer · 28 staff · £2.4m turnover · South Wales</div>
+        <h3 class="ev-problem">Yield 6% below plan — for 9 months undetected</h3>
+        <p class="ev-body">Production logs showed planned yield. Nobody compared them to actual output systematically. A 6% yield gap across the main product line had been running for three quarters. The number had never been calculated or reported. It was visible in the data on Day 1.</p>
+        <div class="ev-numbers">
+          <div class="ev-num"><strong>£2,500</strong><span>Audit cost</span></div>
+          <div class="ev-num"><strong>£38k/yr</strong><span>Yield loss costed</span></div>
+          <div class="ev-num"><strong>15×</strong><span>ROI multiple</span></div>
+        </div>
+      </article>
+
+      <article class="ev-card rv rv-d3">
+        <div class="ev-co">Bakery group · 60 staff · £6.2m turnover · Somerset</div>
+        <h3 class="ev-problem">£52k of stock with no active production allocation</h3>
+        <p class="ev-body">Ghost stock — ingredients purchased for jobs that had been delayed, cancelled, or reformulated. Capital sitting in a cold store, invisible to the accounts team. Matched back to production history in the audit: 14 ingredient lines, £52k, some approaching expiry.</p>
+        <div class="ev-numbers">
+          <div class="ev-num"><strong>£2,500</strong><span>Audit cost</span></div>
+          <div class="ev-num"><strong>£52k</strong><span>Ghost stock identified</span></div>
+          <div class="ev-num"><strong>21×</strong><span>ROI multiple</span></div>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FAQ — LIGHT
+═══════════════════════════════════════════════════════════ -->
+<section id="faq" class="section faq" aria-labelledby="faq-title">
+  <div class="container">
+
+    <span class="slbl rv">07 / Questions</span>
+    <h2 class="stitle rv" id="faq-title">Common questions</h2>
+    <p class="sdesc rv">If something you need isn't answered here, book a discovery call and ask directly.</p>
+
+    <div class="faq-list rv">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What data do you need from us to run the audit?
+          <span class="faq-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>Three clicks from your ERP. We need your batch production records and purchase data for the last 30–60 days — exported as CSV or Excel from Sage 50, Sage 200, Access, or equivalent. If your system can't export in a structured format, we provide a simple four-tab intake template. We specify exactly what we need in advance. The average client spends 30 minutes gathering and sending data.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Do we need clean data or a modern ERP system?
+          <span class="faq-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>No. The Talos data pipeline is built for real-world manufacturing data — messy column headers, inconsistent units, merged cells, multiple file sources. We've processed exports from Sage 50 spreadsheets, manually maintained Excel job books, and Access databases. If your data is genuinely too fragmented to work with, we'll tell you before we charge you anything.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How is our production data kept secure?
+          <span class="faq-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>You send your data via a ProtonDrive secure link — end-to-end encrypted. We process it entirely off-site on our own infrastructure. No third-party cloud processing. No data residency on client premises. Your data is deleted from our systems within 30 days of the engagement closing. The engagement agreement you sign before we start includes explicit data handling provisions.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What exactly do you commit to?
+          <span class="faq-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>We commit to two things in writing. First: every finding we surface is quantified in £ and arithmetically traceable from your own production data — your accountant can verify every figure independently using the same source file. Second: if the audit produces no material, actionable findings, we refund the engagement fee. What we don't promise is a specific £ threshold — results depend on your batch volume, your data history, and what your production records contain. That said, the manufacturers we've worked with have consistently identified savings that significantly exceeded the audit cost in the first quarter of acting on findings. The Margin Clarity call exists partly for this reason: if we don't believe the data will produce meaningful findings, we tell you before you commit a penny.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What's in the Talos Health Report?
+          <span class="faq-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>15 pages. Cover page with a data integrity hash so you can verify the file we analysed matches the file you sent. Executive summary with total margin exposure in £. Full batch variance table — every batch in the audit window, every deviation from plan, every cost. Top 3 loss drivers ranked by £ impact, with the specific calculation behind each. Recommendations: specific, costed actions — not general improvement advice. Delivered in a 45-minute video call. You can act on the findings the same week.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Why can't our ERP do this already?
+          <span class="faq-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>Your ERP records transactions. Talos calculates what those transactions cost you relative to what you planned. Most SME systems — Sage 50/200, Access, Excel — weren't built to run batch variance analysis against recipe standards. They store the data; they don't surface the gap. We work with your existing ERP exports as a data source. No replacement, no migration, no IT project.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How do you calculate the variance figures?
+          <span class="faq-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>We use CIMA standard cost variance formulas — the same methodology any management accountant would recognise. Price variance: (actual price − standard price) × actual quantity. Usage variance: (actual quantity used − standard quantity) × standard price. Yield variance: (actual output − planned output) × standard cost per unit. All calculations are shown in the report and are fully traceable back to your source data.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Is this only for food &amp; beverage manufacturers?
+          <span class="faq-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>Food &amp; beverage is our launch focus because it has the most complex batch costing environment — yield variance, ingredient price volatility, recipe standards, and high batch volume all in one sector. Our profiles and methodology are built for F&amp;B first. If you're a batch manufacturer in another sector and want to discuss whether the audit applies to your operation, book a call and we'll be direct about whether it's a fit.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What happens after the audit?
+          <span class="faq-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>We send the report PDF and invoice the balance within 24 hours of the delivery call. Within 48 hours of payment, you'll receive a one-page monthly monitoring proposal — typically £500–800/month depending on volume. The monitoring service runs the same analysis monthly on your latest ERP export, generates a 3-page delta report, and flags anything that's moved materially from your audit baseline. There's no obligation to continue. Most clients do.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Is there a minimum size or batch volume required?
+          <span class="faq-arrow" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>The sweet spot is manufacturers running at least 20 batches per month with 12+ months of ERP or production history. Below that, the variance signal is harder to isolate from noise. If you're running fewer batches, book a call anyway — sometimes the data density is higher than the batch count suggests, and we'd rather tell you it's a fit than turn you away based on a number alone.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINAL CTA — DARK
+═══════════════════════════════════════════════════════════ -->
+<section id="contact" class="section-sm final-cta dark-section" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-box rv">
+
+      <span class="slbl" style="display:flex;justify-content:center;">Founding clients — places limited</span>
+      <h2 class="stitle" id="cta-title">Start a margin intelligence partnership.</h2>
+      <p class="sdesc">We're taking on founding clients now — at the lowest price this audit will ever be. A 20-minute Margin Clarity call is the first step. We ask about your production data, your ERP system, and what your biggest margin frustration is. No pitch. We listen first. If we're not the right fit, we tell you.</p>
+
+      <div class="cta-btns">
+        <a href="#" class="btn-p" onclick="Cal('modal',{calLink:TALOS_CAL_LINK});return false;">Book a Margin Clarity Call →</a>
+        <a href="mailto:info@talosintelligentsystems.com" class="btn-s">Send a message instead</a>
+      </div>
+
+      <p class="cta-small">Free 20-minute call · Remote nationwide · Founding price: £2,500 · Rises after first three clients</p>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER — DARK
+═══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Talos<span> Intelligent Systems</span></div>
+        <p class="footer-tagline">
+          Manufacturing Intelligence for Batch Producers<br>
+          ERP analysis · Supplier intelligence · Knowledge capture · Tailored AI<br>
+          Data transferred via ProtonDrive · Processed off-site · Not stored beyond the engagement
+        </p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#system">The System</a>
+        <a href="#vision">Platform Vision</a>
+        <a href="#evidence">Case Evidence</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://www.linkedin.com/in/emmanuelchiefson/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:info@talosintelligentsystems.com">Email</a>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Talos Intelligent Systems Ltd · Registered in England and Wales · SIC 62020</p>
+      <div class="footer-legal">
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO CANVAS ANIMATION
+═══════════════════════════════════════════════════════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const c = document.getElementById('hero-bg');
+  if (!c) return;
+  const x = c.getContext('2d');
+  const CY = 11000;
+
+  function sz() {
+    c.width  = c.parentElement.offsetWidth;
+    c.height = c.parentElement.offsetHeight;
+  }
+  sz();
+  window.addEventListener('resize', sz);
+
+  const F = [
+    'batch_047','±0.83%','C4:D47','£0.83/kg','check yield',
+    'line 2?','March adj','2,847.3','John knows','SKU-104B',
+    '=VLOOKUP','old price','97.2%','ask Mike','line stoppage',
+    'Q1 loss','verbal','lost paperwork','0.3t over','recipe v4',
+    '£18,402','check ops','seasonal','waste log','price spike',
+    'batch_003','£3.20','6wk avg','manual count','not in system',
+    'overhead','whiteboard?','ring Sarah','∑ variance'
+  ];
+
+  function mkp(t) {
+    var W=c.width, H=c.height, cx=W/2, cy=H/2;
+    var a=Math.random()*Math.PI*2;
+    var d=80+Math.random()*Math.max(W,H)*0.42;
+    return {
+      t: t,
+      x: cx+Math.cos(a)*d, y: cy+Math.sin(a)*d,
+      vx: (Math.random()-.5)*.32, vy: (Math.random()-.5)*.32,
+      op: .05+Math.random()*.14, fs: 9+Math.floor(Math.random()*5)
+    };
+  }
+
+  var ps=F.map(mkp), st=null, lr_=-1;
+
+  function ei(t) { return t<.5?2*t*t:-1+(4-2*t)*t; }
+  function cl(v,a,b) { return Math.max(a,Math.min(b,v)); }
+  function lp(a,b,t) { return a+(b-a)*t; }
+
+  function draw(ts) {
+    if (!st) st=ts;
+    var raw=(ts-st)%CY, t=raw/CY;
+    var W=c.width, H=c.height, cx=W/2, cy=H/2;
+
+    var cn=Math.floor((ts-st)/CY);
+    if (cn!==lr_) { ps=F.map(mkp); lr_=cn; }
+
+    var fI=ei(cl(t/.05,0,1));
+    var cP=cl((t-.35)/.30,0,1), cE=ei(cP);
+    var rP=cl((t-.65)/.13,0,1), rE=ei(rP);
+    var fO=ei(cl((t-.88)/.12,0,1));
+    var mO=fI*(1-fO);
+
+    x.fillStyle='#0C1117';
+    x.fillRect(0,0,W,H);
+
+    if (cP>.15 && mO>0) {
+      var r=x.createRadialGradient(cx,cy,0,cx,cy,Math.min(W,H)*.38);
+      r.addColorStop(0,'rgba(99,102,241,'+(cE*.09*mO)+')');
+      r.addColorStop(1,'rgba(99,102,241,0)');
+      x.fillStyle=r; x.fillRect(0,0,W,H);
+    }
+
+    if (cP>.1 && mO>0) {
+      var lb=cE*.13*mO*(1-rE*.88);
+      for (var i=0;i<ps.length;i++) {
+        for (var j=i+1;j<ps.length;j++) {
+          var dx=ps[i].x-ps[j].x, dy=ps[i].y-ps[j].y;
+          var dd=Math.sqrt(dx*dx+dy*dy);
+          if (dd<110) {
+            x.beginPath();
+            x.globalAlpha=lb*(1-dd/110);
+            x.strokeStyle='#6366F1'; x.lineWidth=.5;
+            x.moveTo(ps[i].x,ps[i].y); x.lineTo(ps[j].x,ps[j].y); x.stroke();
+          }
+        }
+      }
+      x.globalAlpha=1;
+    }
+
+    for (var k=0;k<ps.length;k++) {
+      var p=ps[k];
+      p.x+=p.vx*(1-cE); p.y+=p.vy*(1-cE);
+      if (p.x<-80) p.x=W+80; if (p.x>W+80) p.x=-80;
+      if (p.y<-80) p.y=H+80; if (p.y>H+80) p.y=-80;
+      p.x+=(cx-p.x)*.022*cE; p.y+=(cy-p.y)*.022*cE;
+      var fo=lp(p.op,p.op+.40,cE)*mO*(1-rE*.92);
+      if (fo<.008) continue;
+      x.globalAlpha=fo;
+      x.font=p.fs+'px IBM Plex Mono,monospace';
+      x.fillStyle='rgb('+Math.round(lp(156,99,cE))+','+Math.round(lp(163,102,cE))+','+Math.round(lp(175,241,cE))+')';
+      var tw=x.measureText(p.t).width;
+      x.fillText(p.t, p.x-tw/2, p.y);
+    }
+    x.globalAlpha=1;
+
+    if (rE>0 && mO>0) {
+      var no=rE*mO, sc=.78+.22*rE;
+      x.save();
+      x.translate(cx,cy); x.scale(sc,sc); x.globalAlpha=no;
+      if (rE>.25) {
+        var gr=x.createRadialGradient(0,0,0,0,0,90);
+        gr.addColorStop(0,'rgba(245,158,11,'+((rE-.25)/.75*.14)+')');
+        gr.addColorStop(1,'rgba(245,158,11,0)');
+        x.fillStyle=gr; x.fillRect(-90,-90,180,180);
+      }
+      x.font='500 52px Space Grotesk,system-ui,sans-serif';
+      x.fillStyle='#F59E0B';
+      x.textAlign='center'; x.textBaseline='middle';
+      x.fillText('£38,400',0,-4);
+      if (rE>.5) {
+        x.globalAlpha=no*(rE-.5)/.5*.62;
+        x.font='10px IBM Plex Mono,monospace';
+        x.fillStyle='#A5B4FC';
+        x.fillText('MARGIN RECOVERY IDENTIFIED',0,36);
+      }
+      x.restore();
+    }
+    x.globalAlpha=1;
+    requestAnimationFrame(draw);
+  }
+
+  requestAnimationFrame(draw);
+});
+</script>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT — UI BEHAVIOURS
+═══════════════════════════════════════════════════════════ -->
+<script>
+  'use strict';
+
+  /* ── Scroll reveal ──────────────────────────────────── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.rv').forEach(el => revealObserver.observe(el));
+
+
+  /* ── Mobile nav ─────────────────────────────────────── */
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('navDrawer');
+
+  burger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(isOpen));
+    drawer.setAttribute('aria-hidden',   String(!isOpen));
+  });
+
+  drawer.addEventListener('click', e => {
+    if (e.target.tagName === 'A') {
+      drawer.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden',   'true');
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      drawer.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden',   'true');
+      burger.focus();
+    }
+  });
+
+
+  /* ── FAQ accordion ──────────────────────────────────── */
+  document.querySelector('.faq-list').addEventListener('click', e => {
+    const btn = e.target.closest('.faq-q');
+    if (!btn) return;
+
+    const item   = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+
+  /* ── Active nav highlight ───────────────────────────── */
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach(link => {
+        const matches = link.getAttribute('href') === '#' + entry.target.id;
+        link.style.color = matches ? 'var(--text-on-dark)' : '';
+      });
+    });
+  }, { rootMargin: '-30% 0px -65% 0px' });
+
+  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+</script>
+
+</body>
+</html>
