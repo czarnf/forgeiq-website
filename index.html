@@ -1494,7 +1494,7 @@
 
     <span class="slbl rv">06 / Case Evidence</span>
     <h2 class="stitle rv" id="evidence-title">What the audit finds</h2>
-    <p class="sdesc rv">These scenarios are composites drawn from real UK SME food &amp; beverage manufacturing patterns. Every number is grounded in industry data and Talos audit methodology.</p>
+    <p class="sdesc rv">These scenarios are composites drawn from real UK SME batch and process manufacturing patterns across food, drink, and adjacent sectors. Every number is grounded in industry data and Talos audit methodology.</p>
 
     <div class="evidence-grid">
 
@@ -1528,6 +1528,17 @@
           <div class="ev-num"><strong>£2,500</strong><span>Audit cost</span></div>
           <div class="ev-num"><strong>£52k</strong><span>Ghost stock identified</span></div>
           <div class="ev-num"><strong>21×</strong><span>ROI multiple</span></div>
+        </div>
+      </article>
+
+      <article class="ev-card rv rv-d4">
+        <div class="ev-co">Independent craft brewery · 18 staff · £1.9m turnover · Yorkshire</div>
+        <h3 class="ev-problem">Extract yield 8% below target — costing £31k per year</h3>
+        <p class="ev-body">Grain-to-extract yield was tracked brew-by-brew but never compared against target systematically. When batch actuals were run against recipe standards, an 8% yield shortfall appeared consistently across 70% of brews — driven by two malt suppliers shipping inconsistent moisture content. The variance engine traced it to supplier and grain variety within 48 hours of data ingestion.</p>
+        <div class="ev-numbers">
+          <div class="ev-num"><strong>£2,500</strong><span>Audit cost</span></div>
+          <div class="ev-num"><strong>£31k/yr</strong><span>Yield loss costed</span></div>
+          <div class="ev-num"><strong>12×</strong><span>ROI multiple</span></div>
         </div>
       </article>
 
@@ -1634,7 +1645,7 @@
           <span class="faq-arrow" aria-hidden="true">+</span>
         </button>
         <div class="faq-a" role="region">
-          <p>Food &amp; beverage is our launch focus because it has the most complex batch costing environment — yield variance, ingredient price volatility, recipe standards, and high batch volume all in one sector. Our profiles and methodology are built for F&amp;B first. If you're a batch manufacturer in another sector and want to discuss whether the audit applies to your operation, book a call and we'll be direct about whether it's a fit.</p>
+          <p>No. The audit applies to any batch or process manufacturer where production is planned against a recipe or bill of materials and margin is lost in the gap between planned and actual. Beyond food and drink, this includes breweries and distilleries, cosmetics and personal care, nutraceuticals and supplements, specialty and fine chemicals, paints and coatings, pet food and animal feed, flavours and fragrances, and contract or private-label manufacturers across any of those sectors. If your operation runs a recipe, plans a batch, and exports production data from an ERP or similar system, the methodology applies. Food &amp; beverage is our launch vertical because it has the highest batch complexity — but the variance engine is not sector-specific. Book a discovery call and we'll tell you directly whether it's a fit.</p>
         </div>
       </div>
 
@@ -1756,7 +1767,7 @@
       <div class="footer-brand">
         <div class="footer-logo">Talos<span> Intelligent Systems</span></div>
         <p class="footer-tagline">
-          Manufacturing Intelligence for Batch Producers<br>
+          Manufacturing Intelligence for Batch &amp; Process Manufacturers<br>
           ERP analysis · Supplier intelligence · Knowledge capture · Tailored AI<br>
           Data transferred via ProtonDrive · Processed off-site · Not stored beyond the engagement
         </p>
@@ -1776,7 +1787,7 @@
     <div class="footer-bottom">
       <p class="footer-copy">© 2026 Talos Intelligent Systems Ltd · Registered in England and Wales · SIC 62020</p>
       <div class="footer-legal">
-        <a href="#privacy">Privacy</a>
+        <a href="/privacy.html">Privacy</a>
         <a href="#terms">Terms</a>
       </div>
     </div>
@@ -1869,29 +1880,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('modalClose').addEventListener('click', closeCapture);
   captureModal.addEventListener('click', e => { if(e.target===captureModal)closeCapture(); });
-  document.addEventListener('keydown', e => { if(e.key==='Escape'&&captureModal.classList.contains('open'))closeCapture(); });
-
-  captureForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    const name=document.getElementById('field-name'), email=document.getElementById('field-email');
-    let valid=true;
-    [name,email].forEach(f=>f.classList.remove('error'));
-    if(!name.value.trim()){name.classList.add('error');name.focus();valid=false;}
-    if(!email.value.trim()||!email.value.includes('@')){email.classList.add('error');if(valid)email.focus();valid=false;}
-    if(!valid)return;
-    submitBtn.textContent='Sending…'; submitBtn.disabled=true;
-    try {
-      await fetch('https://formspree.io/f/'+FORMSPREE_ID,{
-        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify({name:name.value.trim(),email:email.value.trim(),company:document.getElementById('field-company').value.trim(),role:document.getElementById('field-role').value.trim(),source:'Sample Report — talosintelligentsystems.com'})
-      });
-    } catch(_){}
-    captureForm.classList.add('hide'); modalSuccess.classList.add('show');
-    document.getElementById('downloadBtn').href=PDF_PATH;
-    const a=document.createElement('a'); a.href=PDF_PATH; a.download='Talos_Sample_Health_Report.pdf'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  });
-
-</script>
-
-</body>
-</html>
+  document.addEventListener('key
