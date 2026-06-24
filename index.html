@@ -1267,14 +1267,14 @@
       <div class="step rv rv-d1">
         <div class="step-num" aria-hidden="true">01</div>
         <h3 class="step-title">Send us your data</h3>
-        <p class="step-body">Export your last 30–60 days of batch production and purchase data from your ERP — Sage 50, Sage 200, Access, or Excel. Three clicks. Send via our secure ProtonDrive link. No software installation. No IT team required. If you can't export in a structured format, we provide a simple intake template.</p>
+        <p class="step-body">Export your last 30–60 days of batch production and purchase data from your ERP — Sage 50, Sage 200, Access, or Excel. Three clicks. Send via our secure ProtonDrive link. No software installation. No IT team required. We also accept structured PDF reports. If you can't export at all, we provide a simple intake template.</p>
         <div class="step-tag">Day 0 · 30 minutes of your time</div>
       </div>
 
       <div class="step rv rv-d2">
         <div class="step-num" aria-hidden="true">02</div>
         <h3 class="step-title">We run the analysis</h3>
-        <p class="step-body">Our data pipeline processes your export off-site — automatically mapping your columns, normalising formats, and calculating price variance, yield variance, and usage variance per batch. Every deviation from plan is found and quantified in £. You do nothing while this happens.</p>
+        <p class="step-body">Our Data Extraction Layer processes your export off-site — using automated pattern recognition to map your ERP schema to our data model without manual configuration, then applying CIMA-standard variance analysis to calculate price, yield, and usage deviation per batch. Every £ of loss is found, quantified, and traceable to a specific row in your own source data. You do nothing while this happens.</p>
         <div class="step-tag">Days 1–5 · Zero client involvement</div>
       </div>
 
@@ -1965,6 +1965,4 @@ document.addEventListener('DOMContentLoaded', function() {
   function lp(a,b,t){return a+(b-a)*t;}
   function draw(ts){
     if(!st)st=ts;
-    var raw=(ts-st)%CY,t=raw/CY,W=c.width,H=c.height,cx=W/2,cy=H/2;
-    var cn=Math.floor((ts-st)/CY);if(cn!==lr_){ps=F.map(mkp);lr_=cn;}
-    var fI=ei(cl(t/.05,0,1)),cP=cl((t-.35)/.30,0,1),cE=e
+    var raw=(ts-st)%CY,t=raw/CY,W=c.width,H=c.he
