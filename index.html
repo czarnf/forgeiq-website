@@ -39,7 +39,8 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='13' fill='%230C1116'/><rect x='12' y='20' width='48' height='13' fill='%234F46E5'/><rect x='41' y='33' width='18' height='49' fill='%234F46E5'/><rect x='63' y='20' width='25' height='13' rx='2' fill='%23F59E0B'/></svg>">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -293,14 +294,20 @@
     }
 
     .nav-logo {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--text-on-dark);
-      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       flex-shrink: 0;
+      text-decoration: none;
     }
-    .nav-logo span { color: var(--indigo-light); }
+    .nav-logo-wordmark {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      color: var(--text-on-dark);
+      line-height: 1;
+    }
 
     .nav-links { display: none; align-items: center; gap: 28px; }
     .nav-links a {
@@ -879,11 +886,29 @@
     .footer-top { display: flex; flex-direction: column; gap: 20px; }
 
     .footer-logo {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 1.1rem; font-weight: 600;
-      color: var(--text-on-dark); margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
     }
-    .footer-logo span { color: var(--indigo-light); }
+    .footer-logo-text { display: flex; flex-direction: column; }
+    .footer-logo-name {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      color: var(--text-on-dark);
+      line-height: 1;
+    }
+    .footer-logo-sub {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 300;
+      font-size: 0.5rem;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.38);
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
 
     .footer-tagline { font-size: 0.82rem; color: var(--muted-2-on-dark); line-height: 1.6; }
 
@@ -1108,7 +1133,13 @@
     <div class="nav-inner">
 
       <a href="#hero" class="nav-logo" aria-label="Talos Intelligent Systems homepage">
-        Talos<span>.</span>
+        <svg width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="100" height="100" rx="13" fill="#1A1E23"/>
+          <rect x="12" y="20" width="48" height="13" fill="#4F46E5"/>
+          <rect x="41" y="33" width="18" height="49" fill="#4F46E5"/>
+          <rect x="63" y="20" width="25" height="13" rx="2" fill="#F59E0B"/>
+        </svg>
+        <span class="nav-logo-wordmark">TALOS</span>
       </a>
 
       <ul class="nav-links" role="list">
@@ -1765,7 +1796,18 @@
 
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="footer-logo">Talos<span> Intelligent Systems</span></div>
+        <div class="footer-logo">
+          <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <rect width="100" height="100" rx="13" fill="#1A1E23"/>
+            <rect x="12" y="20" width="48" height="13" fill="#4F46E5"/>
+            <rect x="41" y="33" width="18" height="49" fill="#4F46E5"/>
+            <rect x="63" y="20" width="25" height="13" rx="2" fill="#F59E0B"/>
+          </svg>
+          <div class="footer-logo-text">
+            <span class="footer-logo-name">TALOS</span>
+            <span class="footer-logo-sub">Margin Intelligence</span>
+          </div>
+        </div>
         <p class="footer-tagline">
           Manufacturing Intelligence for Batch &amp; Process Manufacturers<br>
           ERP analysis · Supplier intelligence · Knowledge capture · Tailored AI<br>
@@ -1925,20 +1967,4 @@ document.addEventListener('DOMContentLoaded', function() {
     if(!st)st=ts;
     var raw=(ts-st)%CY,t=raw/CY,W=c.width,H=c.height,cx=W/2,cy=H/2;
     var cn=Math.floor((ts-st)/CY);if(cn!==lr_){ps=F.map(mkp);lr_=cn;}
-    var fI=ei(cl(t/.05,0,1)),cP=cl((t-.35)/.30,0,1),cE=ei(cP),rP=cl((t-.65)/.13,0,1),rE=ei(rP),fO=ei(cl((t-.93)/.07,0,1)),mO=fI*(1-fO);
-    x.fillStyle='#0C1117';x.fillRect(0,0,W,H);
-    if(cP>.15&&mO>0){var r=x.createRadialGradient(cx,cy,0,cx,cy,Math.min(W,H)*.38);r.addColorStop(0,'rgba(99,102,241,'+(cE*.09*mO)+')');r.addColorStop(1,'rgba(99,102,241,0)');x.fillStyle=r;x.fillRect(0,0,W,H);}
-    if(cP>.1&&mO>0){var lb=cE*.13*mO*(1-rE*.88);for(var i=0;i<ps.length;i++){for(var j=i+1;j<ps.length;j++){var dx=ps[i].x-ps[j].x,dy=ps[i].y-ps[j].y,dd=Math.sqrt(dx*dx+dy*dy);if(dd<110){x.beginPath();x.globalAlpha=lb*(1-dd/110);x.strokeStyle='#6366F1';x.lineWidth=.5;x.moveTo(ps[i].x,ps[i].y);x.lineTo(ps[j].x,ps[j].y);x.stroke();}}}x.globalAlpha=1;}
-    for(var k=0;k<ps.length;k++){var p=ps[k];p.x+=p.vx*(1-cE);p.y+=p.vy*(1-cE);if(p.x<-80)p.x=W+80;if(p.x>W+80)p.x=-80;if(p.y<-80)p.y=H+80;if(p.y>H+80)p.y=-80;p.x+=(cx-p.x)*.022*cE;p.y+=(cy-p.y)*.022*cE;var fo=lp(p.op,p.op+.40,cE)*mO*(1-rE*.92);if(fo<.008)continue;x.globalAlpha=fo;x.font='bold '+p.fs+'px IBM Plex Mono,monospace';x.fillStyle='rgb('+Math.round(lp(156,99,cE))+','+Math.round(lp(163,102,cE))+','+Math.round(lp(175,241,cE))+')';var tw=x.measureText(p.t).width;x.fillText(p.t,p.x-tw/2,p.y);}
-    x.globalAlpha=1;
-    if(rE>0&&mO>0){var no=rE*mO,sc=.78+.22*rE;x.save();x.translate(cx,cy);x.scale(sc,sc);x.globalAlpha=no;if(rE>.25){var gr=x.createRadialGradient(0,0,0,0,0,90);gr.addColorStop(0,'rgba(245,158,11,'+((rE-.25)/.75*.14)+')');gr.addColorStop(1,'rgba(245,158,11,0)');x.fillStyle=gr;x.fillRect(-90,-90,180,180);}x.font='500 52px Space Grotesk,system-ui,sans-serif';x.fillStyle='#F59E0B';x.textAlign='center';x.textBaseline='middle';x.fillText('£38,400',0,-4);if(rE>.5){x.globalAlpha=no*(rE-.5)/.5*.62;x.font='10px IBM Plex Mono,monospace';x.fillStyle='#A5B4FC';x.fillText('MARGIN RECOVERY IDENTIFIED',0,36);}x.restore();}
-    x.globalAlpha=1;
-    requestAnimationFrame(draw);
-  }
-  requestAnimationFrame(draw);
-});
-</script>
-
-
-</body>
-</html>
+    var fI=ei(cl(t/.05,0,1)),cP=cl((t-.35)/.30,0
