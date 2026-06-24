@@ -1880,4 +1880,95 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('modalClose').addEventListener('click', closeCapture);
   captureModal.addEventListener('click', e => { if(e.target===captureModal)closeCapture(); });
-  document.addEventListener('key
+  document.addEventListener('keydown', e => { if(e.key==='Escape'&&captureModal.classList.contains('open'))closeCapture(); });
+
+  /* FAQ accordion */
+  document.querySelector('.faq-list').addEventListener('click', e => {
+    const btn=e.target.closest('.faq-q'); if(!btn)return;
+    const item=btn.closest('.faq-item'), isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});
+    if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+  });
+
+  /* Active nav highlight */
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if(!entry.isIntersecting)return; navLinks.forEach(link=>{ link.style.color=link.getAttribute('href')==='#'+entry.target.id?'var(--text-on-dark)':''; }); });
+  }, { rootMargin: '-30% 0px -65% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+  /* Email capture modal */
+  const FORMSPREE_ID = 'maqgqygj';
+  const PDF_PATH     = '/assets/Talos_Sample_Health_Report.pdf';
+  const captureModal = document.getElementById('captureModal');
+  const captureForm  = document.getElementById('captureForm');
+  const modalSuccess = document.getElementById('modalSuccess');
+  const submitBtn    = document.getElementById('submitBtn');
+
+  function openCapture() { captureModal.classList.add('open'); document.body.style.overflow='hidden'; setTimeout(()=>document.getElementById('field-name').focus(),100); }
+  function closeCapture() { captureModal.classList.remove('open'); document.body.style.overflow=''; }
+
+  document.getElementById('modalClose').addEventListener('click', closeCapture);
+  captureModal.addEventListener('click', e => { if(e.target===captureModal)closeCapture(); });
+
+  captureForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name=document.getElementById('field-name'), email=document.getElementById('field-email');
+    let valid=true;
+    [name,email].forEach(f=>f.classList.remove('error'));
+    if(!name.value.trim()){name.classList.add('error');name.focus();valid=false;}
+    if(!email.value.trim()||!email.value.includes('@')){email.classList.add('error');if(valid)email.focus();valid=false;}
+    if(!valid)return;
+    submitBtn.textContent='Sending…'; submitBtn.disabled=true;
+    try {
+      await fetch('https://formspree.io/f/'+FORMSPREE_ID,{
+        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({name:name.value.trim(),email:email.value.trim(),company:document.getElementById('field-company').value.trim(),role:document.getElementById('field-role').value.trim(),source:'Sample Report — talosintelligentsystems.com'})
+      });
+    } catch(_){}
+    captureForm.classList.add('hide'); modalSuccess.classList.add('show');
+    document.getElementById('downloadBtn').href=PDF_PATH;
+    const a=document.createElement('a'); a.href=PDF_PATH; a.download='Talos_Sample_Health_Report.pdf'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  });
+
+</script>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO CANVAS ANIMATION
+═══════════════════════════════════════════════════════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c = document.getElementById('hero-bg');
+  if (!c) return;
+  const x = c.getContext('2d');
+  const CY = 11000;
+  function sz() { c.width=c.parentElement.offsetWidth; c.height=c.parentElement.offsetHeight; }
+  sz(); window.addEventListener('resize', sz);
+  const F = ['batch_047','±0.83%','C4:D47','£0.83/kg','check yield','line 2?','March adj','2,847.3','John knows','SKU-104B','=VLOOKUP','old price','97.2%','ask Mike','line stoppage','Q1 loss','verbal','lost paperwork','0.3t over','recipe v4','£18,402','check ops','seasonal','waste log','price spike','batch_003','£3.20','6wk avg','manual count','not in system','overhead','whiteboard?','ring Sarah','∑ variance'];
+  function mkp(t){var W=c.width,H=c.height,cx=W/2,cy=H/2,a=Math.random()*Math.PI*2,d=80+Math.random()*Math.max(W,H)*0.42;return{t:t,x:cx+Math.cos(a)*d,y:cy+Math.sin(a)*d,vx:(Math.random()-.5)*.32,vy:(Math.random()-.5)*.32,op:.05+Math.random()*.14,fs:9+Math.floor(Math.random()*5)};}
+  var ps=F.map(mkp),st=null,lr_=-1;
+  function ei(t){return t<.5?2*t*t:-1+(4-2*t)*t;}
+  function cl(v,a,b){return Math.max(a,Math.min(b,v));}
+  function lp(a,b,t){return a+(b-a)*t;}
+  function draw(ts){
+    if(!st)st=ts;
+    var raw=(ts-st)%CY,t=raw/CY,W=c.width,H=c.height,cx=W/2,cy=H/2;
+    var cn=Math.floor((ts-st)/CY);if(cn!==lr_){ps=F.map(mkp);lr_=cn;}
+    var fI=ei(cl(t/.05,0,1)),cP=cl((t-.35)/.30,0,1),cE=ei(cP),rP=cl((t-.65)/.13,0,1),rE=ei(rP),fO=ei(cl((t-.88)/.12,0,1)),mO=fI*(1-fO);
+    x.fillStyle='#0C1117';x.fillRect(0,0,W,H);
+    if(cP>.15&&mO>0){var r=x.createRadialGradient(cx,cy,0,cx,cy,Math.min(W,H)*.38);r.addColorStop(0,'rgba(99,102,241,'+(cE*.09*mO)+')');r.addColorStop(1,'rgba(99,102,241,0)');x.fillStyle=r;x.fillRect(0,0,W,H);}
+    if(cP>.1&&mO>0){var lb=cE*.13*mO*(1-rE*.88);for(var i=0;i<ps.length;i++){for(var j=i+1;j<ps.length;j++){var dx=ps[i].x-ps[j].x,dy=ps[i].y-ps[j].y,dd=Math.sqrt(dx*dx+dy*dy);if(dd<110){x.beginPath();x.globalAlpha=lb*(1-dd/110);x.strokeStyle='#6366F1';x.lineWidth=.5;x.moveTo(ps[i].x,ps[i].y);x.lineTo(ps[j].x,ps[j].y);x.stroke();}}}x.globalAlpha=1;}
+    for(var k=0;k<ps.length;k++){var p=ps[k];p.x+=p.vx*(1-cE);p.y+=p.vy*(1-cE);if(p.x<-80)p.x=W+80;if(p.x>W+80)p.x=-80;if(p.y<-80)p.y=H+80;if(p.y>H+80)p.y=-80;p.x+=(cx-p.x)*.022*cE;p.y+=(cy-p.y)*.022*cE;var fo=lp(p.op,p.op+.40,cE)*mO*(1-rE*.92);if(fo<.008)continue;x.globalAlpha=fo;x.font=p.fs+'px IBM Plex Mono,monospace';x.fillStyle='rgb('+Math.round(lp(156,99,cE))+','+Math.round(lp(163,102,cE))+','+Math.round(lp(175,241,cE))+')';var tw=x.measureText(p.t).width;x.fillText(p.t,p.x-tw/2,p.y);}
+    x.globalAlpha=1;
+    if(rE>0&&mO>0){var no=rE*mO,sc=.78+.22*rE;x.save();x.translate(cx,cy);x.scale(sc,sc);x.globalAlpha=no;if(rE>.25){var gr=x.createRadialGradient(0,0,0,0,0,90);gr.addColorStop(0,'rgba(245,158,11,'+((rE-.25)/.75*.14)+')');gr.addColorStop(1,'rgba(245,158,11,0)');x.fillStyle=gr;x.fillRect(-90,-90,180,180);}x.font='500 52px Space Grotesk,system-ui,sans-serif';x.fillStyle='#F59E0B';x.textAlign='center';x.textBaseline='middle';x.fillText('£38,400',0,-4);if(rE>.5){x.globalAlpha=no*(rE-.5)/.5*.62;x.font='10px IBM Plex Mono,monospace';x.fillStyle='#A5B4FC';x.fillText('MARGIN RECOVERY IDENTIFIED',0,36);}x.restore();}
+    x.globalAlpha=1;
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+});
+</script>
+
+</body>
+</html>
