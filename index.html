@@ -1646,7 +1646,7 @@
           <span class="faq-arrow" aria-hidden="true">+</span>
         </button>
         <div class="faq-a" role="region">
-          <p>15 pages. Cover page with a data integrity hash so you can verify the file we analysed matches the file you sent. Executive summary with total margin exposure in £. Full batch variance table — every batch in the audit window, every deviation from plan, every cost. Top 3 loss drivers ranked by £ impact, with the specific calculation behind each. Recommendations: specific, costed actions — not general improvement advice. Delivered in a 45-minute video call. You can act on the findings the same week.</p>
+          <p>The report length scales with your dataset — a client with 60 days of data across 80 batches will receive a longer report than one with 30 days across 20 batches. Every report contains: a cover page with a data integrity hash so you can verify the file we analysed matches what you sent; an executive summary with total margin exposure in £; a full batch variance table covering every batch in the audit window; the top 3 loss drivers ranked by £ impact with the specific calculation behind each; and specific, costed recommendations — not general improvement advice. Delivered in a 45-minute video call. You can act on the findings the same week.</p>
         </div>
       </div>
 
@@ -1965,4 +1965,12 @@ document.addEventListener('DOMContentLoaded', function() {
   function lp(a,b,t){return a+(b-a)*t;}
   function draw(ts){
     if(!st)st=ts;
-    var raw=(ts-st)%CY,t=raw/CY,W=c.width,H=c.he
+    var raw=(ts-st)%CY,t=raw/CY,W=c.width,H=c.height,cx=W/2,cy=H/2;
+    var cn=Math.floor((ts-st)/CY);if(cn!==lr_){ps=F.map(mkp);lr_=cn;}
+    var fI=ei(cl(t/.05,0,1)),cP=cl((t-.35)/.30,0,1),cE=ei(cP),rP=cl((t-.65)/.13,0,1),rE=ei(rP),fO=ei(cl((t-.93)/.07,0,1)),mO=fI*(1-fO);
+    x.fillStyle='#0C1117';x.fillRect(0,0,W,H);
+    if(cP>.15&&mO>0){var r=x.createRadialGradient(cx,cy,0,cx,cy,Math.min(W,H)*.38);r.addColorStop(0,'rgba(99,102,241,'+(cE*.09*mO)+')');r.addColorStop(1,'rgba(99,102,241,0)');x.fillStyle=r;x.fillRect(0,0,W,H);}
+    if(cP>.1&&mO>0){var lb=cE*.13*mO*(1-rE*.88);for(var i=0;i<ps.length;i++){for(var j=i+1;j<ps.length;j++){var dx=ps[i].x-ps[j].x,dy=ps[i].y-ps[j].y,dd=Math.sqrt(dx*dx+dy*dy);if(dd<110){x.beginPath();x.globalAlpha=lb*(1-dd/110);x.strokeStyle='#6366F1';x.lineWidth=.5;x.moveTo(ps[i].x,ps[i].y);x.lineTo(ps[j].x,ps[j].y);x.stroke();}}}x.globalAlpha=1;}
+    for(var k=0;k<ps.length;k++){var p=ps[k];p.x+=p.vx*(1-cE);p.y+=p.vy*(1-cE);if(p.x<-80)p.x=W+80;if(p.x>W+80)p.x=-80;if(p.y<-80)p.y=H+80;if(p.y>H+80)p.y=-80;p.x+=(cx-p.x)*.022*cE;p.y+=(cy-p.y)*.022*cE;var fo=lp(p.op,p.op+.40,cE)*mO*(1-rE*.92);if(fo<.008)continue;x.globalAlpha=fo;x.font='bold '+p.fs+'px IBM Plex Mono,monospace';x.fillStyle='rgb('+Math.round(lp(156,99,cE))+','+Math.round(lp(163,102,cE))+','+Math.round(lp(175,241,cE))+')';var tw=x.measureText(p.t).width;x.fillText(p.t,p.x-tw/2,p.y);}
+    x.globalAlpha=1;
+    if(rE>0&&mO>0){var no=rE*mO,sc=.78+.22*rE;x.save();x.translate(cx,cy);x.scale(sc,sc);x.globalAlpha=no;if(rE>.25){var gr=x.createRadialGradient(0,0,0,0,0,90);gr.addColorStop(0,'rgba(245,158,11,'+((rE-.25)/.75*.14)+')');gr.addColorStop(1,'rgba(245,158,11,0)');x.fillStyle=gr;x.fillRect(-90,-90,180,180);}x.font='500 52px Space Grotesk,system-ui,sans-serif';x.fillStyle='#F59E0B';x.textAlign='center';x.textBaseline='middle';x.fillText('£38,400',0,-4);if(rE>.5){x.globalAlpha=no*(rE-.5)/.5*.62;x.font='10px IBM Plex Mono,monospace';x.fillStyle='#A5B4FC';x.fillText('MARGIN RECOVERY IDENTIFIE
