@@ -1185,6 +1185,15 @@
     }
     .founder-link:hover { color: var(--indigo); border-color: var(--indigo); }
 
+    .founder-creds {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
+      color: var(--muted-2);
+      margin-bottom: 22px;
+      line-height: 1.7;
+    }
+
   </style>
 </head>
 
@@ -1862,8 +1871,10 @@
       <span class="founder-label">Who built this</span>
       <h2 class="founder-name" id="founder-name">Emmanuel Chiefson</h2>
       <p class="founder-role">Founder &amp; Systems Architect · Talos Intelligent Systems Ltd</p>
-      <p class="founder-bio">I built Talos because the problem is solvable. UK manufacturers sit on years of production data that has never been asked the right question. The data is there — in ERP exports, in job sheets, in purchase records — but the systems that record it weren't built to surface the gaps. The result is margin loss that accumulates silently, batch by batch, quarter by quarter.</p>
-      <p class="founder-bio">My background is in NHS digital delivery and operational systems design: building the analytical layer between complex data and decisions that actually get made. Talos applies that discipline to manufacturing margin. You send the data. We find the loss. Every figure is traceable to your source record — no black box, no methodology you can't verify.</p>
+      <p class="founder-creds">MSc Information Technology (Merit · UWE 2024) &nbsp;·&nbsp; BSc Project Management &nbsp;·&nbsp; Microsoft AI Fundamentals &nbsp;·&nbsp; Microsoft Cloud &nbsp;·&nbsp; AWS Cloud Essentials &nbsp;·&nbsp; Oracle Cloud Associate</p>
+      <p class="founder-bio">Emmanuel's career spans commercial software delivery, NHS operational systems, IoT hardware engineering, and full-stack development — across environments where data is messy, stakes are real, and the people asking the questions are not data scientists. At Bayside Consult he led end-to-end delivery of an AI-powered logistics platform for a European startup: product discovery through to Azure-backed production infrastructure, real-time data pipelines, and API integrations with third-party registries. At NHS Foundation Trust he operates where live operational data and clinical decision-making intersect — environments where information accuracy has direct consequences and decisions are made under pressure on imperfect inputs.</p>
+      <p class="founder-bio">His MSc coursework included hands-on IoT sensor builds: Arduino microcontrollers, WiFi-connected sensor networks, hardware-to-cloud data interfacing, and extended unattended data collection. The same chain of reasoning — from raw data capture to a clean, interpretable output — runs through the Talos analytical engine. It was designed and built entirely in-house: auto-mapping ERP column formats using probabilistic pattern recognition, applying CIMA-standard variance calculations per batch, and producing a board-ready PDF with every finding traceable to its source row. No third-party black box. No methodology you cannot verify.</p>
+      <p class="founder-bio">Secure data handling is built into the engagement design, not bolted on. His research at MSc level covered cybersecurity in operational environments, grounded in NIST CSF and ISO/IEC 27001 principles. Client data is transferred via ProtonDrive, processed off-site on encrypted hardware, and deleted within 30 days of report delivery.</p>
       <a href="https://www.linkedin.com/in/emmanuelchiefson/" target="_blank" rel="noopener" class="founder-link">
         LinkedIn profile →
       </a>
@@ -2010,25 +2021,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
   captureForm.addEventListener('submit', async e => {
     e.preventDefault();
-    const name=document.getElementById('field-name'), email=document.getElementById('field-email');
-    let valid=true;
-    [name,email].forEach(f=>f.classList.remove('error'));
-    if(!name.value.trim()){name.classList.add('error');name.focus();valid=false;}
-    if(!email.value.trim()||!email.value.includes('@')){email.classList.add('error');if(valid)email.focus();valid=false;}
-    if(!valid)return;
-    submitBtn.textContent='Sending…'; submitBtn.disabled=true;
-    try {
-      await fetch('https://formspree.io/f/'+FORMSPREE_ID,{
-        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify({name:name.value.trim(),email:email.value.trim(),company:document.getElementById('field-company').value.trim(),role:document.getElementById('field-role').value.trim(),source:'Sample Report — talosintelligentsystems.com'})
-      });
-    } catch(_){}
-    captureForm.classList.add('hide'); modalSuccess.classList.add('show');
-    document.getElementById('downloadBtn').href=PDF_PATH;
-    const a=document.createElement('a'); a.href=PDF_PATH; a.download='Talos_Sample_Health_Report.pdf'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  });
-</script>
-
-<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═<!-- ═
-     HERO CANVAS ANIMATION
-════════�
+    const name=document.getElementById('field-name'), email=docu
