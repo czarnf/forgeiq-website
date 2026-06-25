@@ -2027,26 +2027,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
   });
 
-  /* Active nav highlight */
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const sectionObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if(!entry.isIntersecting)return; navLinks.forEach(link=>{ link.style.color=link.getAttribute('href')==='#'+entry.target.id?'var(--text-on-dark)':''; }); });
-  }, { rootMargin: '-30% 0px -65% 0px' });
-  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
-
-  /* Email capture modal */
-  const FORMSPREE_ID = 'maqgqygj';
-  const PDF_PATH     = '/assets/Talos_Sample_Health_Report.pdf';
-  const captureModal = document.getElementById('captureModal');
-  const captureForm  = document.getElementById('captureForm');
-  const modalSuccess = document.getElementById('modalSuccess');
-  const submitBtn    = document.getElementById('submitBtn');
-
-  function openCapture() { captureModal.classList.add('open'); document.body.style.overflow='hidden'; setTimeout(()=>document.getElementById('field-name').focus(),100); }
-  function closeCapture() { captureModal.classList.remove('open'); document.body.style.overflow=''; }
-
-  document.getElementById('modalClose').addEventListener('click', closeCapture);
-  captureModal.addEventListener('click', e => { if(e.target===captureModal)closeCapture(); });
 
   captureForm.addEventListener('submit', async e => {
     e.preventDefault();
