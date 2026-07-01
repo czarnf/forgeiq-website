@@ -848,23 +848,23 @@
 
     .vision-statement {
       margin-top: 56px; padding: 40px 40px 36px;
-      border: 1px solid var(--border-light);
-      border-left: 3px solid var(--indigo);
+      border: 1px solid var(--border-dark);
+      border-left: 3px solid var(--indigo-light);
       border-radius: 0 var(--r) var(--r) 0;
-      background: var(--card);
+      background: var(--card-dark);
     }
 
     .vs-quote {
       font-family: 'Instrument Serif', Georgia, serif;
       font-size: clamp(1.05rem, 2.5vw, 1.35rem);
-      line-height: 1.6; color: var(--text);
+      line-height: 1.6; color: var(--text-on-dark);
       font-style: italic; margin-bottom: 16px;
     }
 
     .vs-attr {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--indigo);
+      color: var(--indigo-light);
     }
 
     /* ═══════════════════════════════════════════════════════════
@@ -1231,7 +1231,6 @@
       <ul class="nav-links" role="list">
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#system">The System</a></li>
-        <li><a href="#vision">Platform</a></li>
         <li><a href="#evidence">Results</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -1248,7 +1247,6 @@
     <div class="nav-drawer" id="navDrawer" aria-hidden="true">
       <a href="#how-it-works">How It Works</a>
       <a href="#system">The System</a>
-      <a href="#vision">Platform</a>
       <a href="#evidence">Results</a>
       <a href="#faq">FAQ</a>
       <a href="#" class="btn-p" onclick="Cal('modal',{calLink:TALOS_CAL_LINK});return false;">Book a Margin Clarity Call</a>
@@ -1389,7 +1387,7 @@
 
     <span class="slbl rv">03 / The System</span>
     <h2 class="stitle rv" id="system-title">Built for what your ERP cannot show you.</h2>
-    <p class="sdesc rv">The 7-day audit is the entry point. What follows is a full manufacturing intelligence layer — structured ERP data, supplier documents, institutional knowledge, and operational patterns, reconciled into one coherent picture of where margin goes and why.</p>
+    <p class="sdesc rv">The audit solves the immediate problem. The platform solves the structural one. Most manufacturing businesses are sitting on years of data that has never been asked the right question — structured ERP data, supplier documents, institutional knowledge, and operational patterns, reconciled into one coherent picture of where margin goes and why.</p>
 
     <div class="system-grid">
 
@@ -1424,70 +1422,6 @@
         <p class="sys-body">A dedicated AI system trained on your ERP history, supplier relationships, operational knowledge base, and production patterns. Answers questions in plain language: why did margin drop in March, which ingredient is the biggest risk this quarter, what would switching suppliers cost you. Built from the data we've been processing since day one.</p>
         <div class="sys-role">Every client gets one. No two are the same.</div>
       </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     PLATFORM VISION — LIGHT (paper-2)
-═══════════════════════════════════════════════════════════ -->
-<section id="vision" class="section vision-section" aria-labelledby="vision-title">
-  <div class="container">
-
-    <span class="slbl rv">04 / The Vision</span>
-    <h2 class="stitle rv" id="vision-title">Manufacturing intelligence. Built in three layers.</h2>
-    <p class="sdesc rv">The audit solves the immediate problem. The platform solves the structural one. Most manufacturing businesses are sitting on years of data that has never been asked the right question. Talos is built to ask it — across every source of information the business already generates.</p>
-
-    <div class="vision-timeline rv">
-
-      <div class="vt-track" aria-hidden="true"></div>
-
-      <div class="vt-item rv rv-d1">
-        <div class="vt-dot active"></div>
-        <div class="vt-content">
-          <div class="vt-period">Year 1 — Now</div>
-          <h3 class="vt-title">Structured Data Intelligence</h3>
-          <p class="vt-body">ERP exports → variance engine → Health Report. The data your system already records, interrogated properly for the first time. Price variance, yield variance, usage variance — every batch, every deviation, quantified in £.</p>
-          <div class="vt-chips">
-            <span class="vt-chip active">7-Day Audit</span>
-            <span class="vt-chip active">Monthly Monitoring</span>
-            <span class="vt-chip active">Talos Health Report</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="vt-item rv rv-d2">
-        <div class="vt-dot soon"></div>
-        <div class="vt-content">
-          <div class="vt-period">Year 2 — 2027</div>
-          <h3 class="vt-title">Multi-Modal Intelligence</h3>
-          <p class="vt-body">The second layer of margin loss doesn't live in your ERP. It lives in PDF supplier invoices that were never reconciled against quoted prices. In job quotes made without visibility of real cost history. In operational expertise held in people's heads that could walk out the door tomorrow. Talos will ingest all of it — automatically — and surface the £ impact alongside your ERP data.</p>
-          <div class="vt-chips">
-            <span class="vt-chip soon">Supplier Invoice Intelligence</span>
-            <span class="vt-chip soon">Quoting Intelligence</span>
-            <span class="vt-chip soon">Knowledge Capture</span>
-            <span class="vt-chip soon">Client-Facing Portal</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="vt-item rv rv-d3">
-        <div class="vt-dot future"></div>
-        <div class="vt-content">
-          <div class="vt-period">Year 3 — 2028</div>
-          <h3 class="vt-title">Tailored Manufacturing Agent</h3>
-          <p class="vt-body">Each client gets a dedicated AI system — trained on their ERP history, supplier network, operational knowledge base, and production patterns. It answers questions in plain language. It flags problems before they show up in the month-end. It knows your business because it has been learning from your data since day one. No two agents are the same, because no two manufacturers are the same.</p>
-          <div class="vt-chips">
-            <span class="vt-chip future">Custom Manufacturing Agent</span>
-            <span class="vt-chip future">Predictive Margin Alerts</span>
-            <span class="vt-chip future">Portfolio Intelligence</span>
-            <span class="vt-chip future">Multi-Site Scale</span>
-          </div>
-        </div>
-      </div>
 
     </div>
 
@@ -1930,7 +1864,6 @@
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="#how-it-works">How It Works</a>
         <a href="#system">The System</a>
-        <a href="#vision">Platform Vision</a>
         <a href="#evidence">Case Evidence</a>
         <a href="#faq">FAQ</a>
         <a href="https://www.linkedin.com/in/emmanuelchiefson/" target="_blank" rel="noopener">LinkedIn</a>
