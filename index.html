@@ -699,8 +699,15 @@
       .ev-card:hover { border-color: var(--border-indigo); }
     }
 
+    .ev-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
     .ev-badge {
-      position: absolute; top: 16px; right: 16px;
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em;
       color: var(--muted-2);
@@ -708,12 +715,15 @@
       border: 1px solid var(--border-light);
       border-radius: 4px;
       padding: 3px 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .ev-co {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--muted-2); margin-bottom: 10px;
+      color: var(--muted-2);
+      flex: 1 1 auto; min-width: 0;
     }
 
     .ev-problem { font-size: 1rem; font-weight: 500; color: var(--text); margin-bottom: 12px; line-height: 1.4; }
@@ -1584,8 +1594,10 @@
     <div class="evidence-grid">
 
       <article class="ev-card rv rv-d1">
-        <span class="ev-badge">Illustrative composite</span>
-        <div class="ev-co">Ready meals producer · 45 staff · £4.8m turnover · Bristol</div>
+        <div class="ev-head">
+          <div class="ev-co">Ready meals producer · 45 staff · £4.8m turnover · Bristol</div>
+          <span class="ev-badge">Illustrative composite</span>
+        </div>
         <h3 class="ev-problem">Ingredient cost running 11% above recipe standard</h3>
         <p class="ev-body">Supplier prices had risen three times in 18 months. The bill of materials hadn't been updated. Every batch was being costed against a recipe that no longer reflected actual ingredient costs — the MD had no idea how much this was worth until the numbers were run.</p>
         <div class="ev-numbers">
@@ -1596,8 +1608,10 @@
       </article>
 
       <article class="ev-card rv rv-d2">
-        <span class="ev-badge">Illustrative composite</span>
-        <div class="ev-co">Chilled sauce manufacturer · 28 staff · £2.4m turnover · South Wales</div>
+        <div class="ev-head">
+          <div class="ev-co">Chilled sauce manufacturer · 28 staff · £2.4m turnover · South Wales</div>
+          <span class="ev-badge">Illustrative composite</span>
+        </div>
         <h3 class="ev-problem">Three separate variance types, £56.8k/yr combined — none visible until Day 1</h3>
         <p class="ev-body">Yield running 6.2% below plan on the signature line. A supplier price increase never updated in the bill of materials. A spice blend being over-dosed by 18% against recipe standard on one production line. Three unrelated causes, each invisible on its own — reconciling every batch against its own standard surfaced all three in the same audit window.</p>
         <div class="ev-numbers">
@@ -1608,8 +1622,10 @@
       </article>
 
       <article class="ev-card rv rv-d3">
-        <span class="ev-badge">Illustrative composite</span>
-        <div class="ev-co">Bakery group · 60 staff · £6.2m turnover · Somerset</div>
+        <div class="ev-head">
+          <div class="ev-co">Bakery group · 60 staff · £6.2m turnover · Somerset</div>
+          <span class="ev-badge">Illustrative composite</span>
+        </div>
         <h3 class="ev-problem">£52k of stock with no active production allocation</h3>
         <p class="ev-body">Ghost stock — ingredients purchased for jobs that had been delayed, cancelled, or reformulated. Capital sitting in a cold store, invisible to the accounts team. Matched back to production history in the audit: 14 ingredient lines, £52k, some approaching expiry.</p>
         <div class="ev-numbers">
@@ -1620,8 +1636,10 @@
       </article>
 
       <article class="ev-card rv rv-d4">
-        <span class="ev-badge">Illustrative composite</span>
-        <div class="ev-co">Independent craft brewery · 18 staff · £1.9m turnover · Yorkshire</div>
+        <div class="ev-head">
+          <div class="ev-co">Independent craft brewery · 18 staff · £1.9m turnover · Yorkshire</div>
+          <span class="ev-badge">Illustrative composite</span>
+        </div>
         <h3 class="ev-problem">Extract yield 8% below target — costing £31k per year</h3>
         <p class="ev-body">Grain-to-extract yield was tracked brew-by-brew but never compared against target systematically. When batch actuals were run against recipe standards, an 8% yield shortfall appeared consistently across 70% of brews — driven by two malt suppliers shipping inconsistent moisture content. The variance engine traced it to supplier and grain variety within 48 hours of data ingestion.</p>
         <div class="ev-numbers">
