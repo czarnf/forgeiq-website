@@ -39,7 +39,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='13' fill='%230C1116'/><rect x='12' y='20' width='48' height='13' fill='white'/><rect x='41' y='33' width='18' height='49' fill='white'/><rect x='63' y='20' width='25' height='13' rx='2' fill='%23F59E0B'/></svg>">
 
   <!-- Structured Data -->
@@ -112,8 +112,9 @@
       --r-full: 999px;
 
       /* Motion */
-      --t:      0.2s ease;
-      --t-slow: 0.4s ease;
+      --t:        0.2s ease;
+      --t-slow:   0.4s ease;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
       /* Layout */
       --max-w:         1100px;
@@ -207,7 +208,7 @@
     .rv {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
     }
     .rv.visible  { opacity: 1; transform: translateY(0); }
     .rv-d1 { transition-delay: 0.08s; }
@@ -228,7 +229,7 @@
       font-size: 0.92rem;
       font-weight: 500;
       line-height: 1;
-      transition: all var(--t);
+      transition: background var(--t), border-color var(--t), color var(--t), transform 0.2s var(--ease-out);
       border: none;
       cursor: pointer;
       white-space: nowrap;
@@ -241,9 +242,11 @@
       color: var(--ink);
       border: 1px solid transparent;
     }
-    .btn-p:hover {
-      background: var(--amber-dark);
-      transform: translateY(-1px);
+    @media (hover: hover) and (pointer: fine) {
+      .btn-p:hover {
+        background: var(--amber-dark);
+        transform: translateY(-1px);
+      }
     }
     .btn-p:active { transform: scale(0.98); }
 
@@ -253,10 +256,13 @@
       color: var(--text-on-dark);
       border: 1px solid var(--border-dark-h);
     }
-    .btn-s:hover {
-      border-color: rgba(255,255,255,0.45);
-      background: rgba(255,255,255,0.06);
+    @media (hover: hover) and (pointer: fine) {
+      .btn-s:hover {
+        border-color: rgba(255,255,255,0.45);
+        background: rgba(255,255,255,0.06);
+      }
     }
+    .btn-s:active { transform: scale(0.98); }
 
     /* Outline — secondary on light sections */
     .btn-outline {
@@ -264,10 +270,13 @@
       color: var(--text);
       border: 1px solid var(--border-light-h);
     }
-    .btn-outline:hover {
-      border-color: var(--indigo);
-      color: var(--indigo);
+    @media (hover: hover) and (pointer: fine) {
+      .btn-outline:hover {
+        border-color: var(--indigo);
+        color: var(--indigo);
+      }
     }
+    .btn-outline:active { transform: scale(0.98); }
 
     /* ═══════════════════════════════════════════════════════════
        NAV
@@ -301,7 +310,7 @@
       text-decoration: none;
     }
     .nav-logo-wordmark {
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-weight: 400;
       font-size: 1rem;
       letter-spacing: 0.18em;
@@ -311,13 +320,15 @@
 
     .nav-links { display: none; align-items: center; gap: 28px; }
     .nav-links a {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
       font-size: 0.875rem;
       font-weight: 500;
       color: var(--muted-on-dark);
       transition: color var(--t);
     }
-    .nav-links a:hover { color: var(--text-on-dark); }
+    @media (hover: hover) and (pointer: fine) {
+      .nav-links a:hover { color: var(--text-on-dark); }
+    }
 
     .nav-cta { padding: 10px 20px; font-size: 0.875rem; }
 
@@ -327,7 +338,7 @@
     }
     .nav-burger span {
       display: block; width: 22px; height: 2px;
-      background: var(--muted-on-dark); border-radius: 2px; transition: all var(--t);
+      background: var(--muted-on-dark); border-radius: 2px; transition: transform 0.3s var(--ease-out), opacity var(--t);
     }
     .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
@@ -342,14 +353,16 @@
     .nav-drawer.open { display: block; }
     .nav-drawer a {
       display: block; padding: 13px 0;
-      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
       font-size: 0.95rem; font-weight: 500;
       color: var(--muted-on-dark);
       border-bottom: 1px solid var(--border-dark);
       transition: color var(--t);
     }
     .nav-drawer a:last-of-type { border-bottom: none; }
-    .nav-drawer a:hover { color: var(--text-on-dark); }
+    @media (hover: hover) and (pointer: fine) {
+      .nav-drawer a:hover { color: var(--text-on-dark); }
+    }
     .nav-drawer .btn-p { margin-top: 16px; width: 100%; justify-content: center; }
 
     @media (min-width: 768px) {
@@ -479,9 +492,11 @@
       padding: 28px 28px 32px;
       transition: border-color var(--t), transform var(--t);
     }
-    .pain-card:hover {
-      border-color: var(--border-indigo);
-      transform: translateY(-2px);
+    @media (hover: hover) and (pointer: fine) {
+      .pain-card:hover {
+        border-color: var(--border-indigo);
+        transform: translateY(-2px);
+      }
     }
 
     .pain-stat {
@@ -567,8 +582,10 @@
       background: linear-gradient(90deg, var(--indigo), transparent 60%);
       opacity: 0; transition: opacity var(--t);
     }
-    .sys-card:hover { border-color: var(--border-dark-h); box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
-    .sys-card:hover::after { opacity: 1; }
+    @media (hover: hover) and (pointer: fine) {
+      .sys-card:hover { border-color: var(--border-dark-h); box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
+      .sys-card:hover::after { opacity: 1; }
+    }
 
     .sys-stage {
       font-family: 'IBM Plex Mono', monospace;
@@ -678,7 +695,9 @@
       padding: 28px 28px 32px;
       transition: border-color var(--t);
     }
-    .ev-card:hover { border-color: var(--border-indigo); }
+    @media (hover: hover) and (pointer: fine) {
+      .ev-card:hover { border-color: var(--border-indigo); }
+    }
 
     .ev-badge {
       position: absolute; top: 16px; right: 16px;
@@ -741,7 +760,9 @@
       font-size: 0.95rem; font-weight: 500; color: var(--text);
       transition: background var(--t); cursor: pointer;
     }
-    .faq-q:hover { background: var(--paper-2); }
+    @media (hover: hover) and (pointer: fine) {
+      .faq-q:hover { background: var(--paper-2); }
+    }
 
     .faq-arrow {
       color: var(--indigo); font-size: 1.2rem;
@@ -905,7 +926,7 @@
     }
     .footer-logo-text { display: flex; flex-direction: column; }
     .footer-logo-name {
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-weight: 400;
       font-size: 1rem;
       letter-spacing: 0.18em;
@@ -913,7 +934,7 @@
       line-height: 1;
     }
     .footer-logo-sub {
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-weight: 300;
       font-size: 0.5rem;
       letter-spacing: 0.25em;
@@ -928,7 +949,9 @@
     .footer-nav a {
       font-size: 0.82rem; color: var(--muted-2-on-dark); transition: color var(--t);
     }
-    .footer-nav a:hover { color: var(--text-on-dark); }
+    @media (hover: hover) and (pointer: fine) {
+      .footer-nav a:hover { color: var(--text-on-dark); }
+    }
 
     .footer-bottom {
       margin-top: 32px; padding-top: 20px;
@@ -942,7 +965,9 @@
     .footer-legal a {
       font-size: 0.75rem; color: var(--muted-2-on-dark); transition: color var(--t);
     }
-    .footer-legal a:hover { color: var(--muted-on-dark); }
+    @media (hover: hover) and (pointer: fine) {
+      .footer-legal a:hover { color: var(--muted-on-dark); }
+    }
 
     @media (min-width: 768px) {
       .footer-top { flex-direction: row; justify-content: space-between; align-items: flex-start; }
@@ -984,7 +1009,9 @@
       padding: 4px 8px; border-radius: var(--r-sm);
       transition: color var(--t);
     }
-    .modal-close:hover { color: var(--text-on-dark); }
+    @media (hover: hover) and (pointer: fine) {
+      .modal-close:hover { color: var(--text-on-dark); }
+    }
 
     .modal-eyebrow {
       font-family: 'IBM Plex Mono', monospace;
@@ -1091,12 +1118,14 @@
       display: inline-flex; align-items: center; gap: 8px;
       padding: 13px 26px; border-radius: var(--r-sm);
       background: var(--amber); color: var(--ink);
-      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
       font-size: 0.92rem; font-weight: 500;
       border: none; cursor: pointer; text-decoration: none;
       transition: background var(--t);
     }
-    .btn-download:hover { background: var(--amber-dark); }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-download:hover { background: var(--amber-dark); }
+    }
 
     /* Inline download strip (evidence section) */
     .download-strip {
@@ -1195,7 +1224,9 @@
       padding-bottom: 2px;
       transition: color var(--t), border-color var(--t);
     }
-    .founder-link:hover { color: var(--indigo); border-color: var(--indigo); }
+    @media (hover: hover) and (pointer: fine) {
+      .founder-link:hover { color: var(--indigo); border-color: var(--indigo); }
+    }
 
     .founder-creds {
       font-family: 'IBM Plex Mono', monospace;
@@ -1825,10 +1856,10 @@
       <span class="founder-label">Who built this</span>
       <h2 class="founder-name" id="founder-name">Emmanuel Chiefson</h2>
       <p class="founder-role">Founder &amp; Systems Architect · Talos Intelligent Systems Ltd</p>
-      <p class="founder-creds">MSc Information Technology (Merit · UWE 2024) &nbsp;·&nbsp; BSc Project Management &nbsp;·&nbsp; Microsoft AI Fundamentals &nbsp;·&nbsp; Microsoft Cloud &nbsp;·&nbsp; AWS Cloud Essentials &nbsp;·&nbsp; Oracle Cloud Associate &nbsp;(training completed, certification exams in progress)</p>
+      <p class="founder-creds">MSc Information Technology (Merit · UWE 2024) &nbsp;·&nbsp; BSc Project Management &nbsp;·&nbsp; Microsoft AI Fundamentals. &nbsp;&nbsp; In progress: Microsoft Cloud, AWS Cloud Essentials, Oracle Cloud Associate (training complete, exams pending).</p>
       <p class="founder-bio">Manufacturing businesses run on data they can't fully see. ERP systems record what happened — quantities, costs, batches. They don't surface the gap between what production actually cost and what it should have. That gap is where margin goes, quietly, batch by batch. I built Talos to find it.</p>
-      <p class="founder-bio">Emmanuel holds an MSc in Information Technology (Merit, UWE 2024) and has spent a decade building the analytical layer between complex operational data and decisions that actually get made — starting in freelance web and e-commerce delivery for US clients since 2016, through Azure-backed commercial platforms at Bayside Consult, to NHS operational and digital delivery today. Talos's analysis approach was designed and built entirely in-house: applying standard cost variance calculations per batch and producing a board-ready PDF with every finding traceable to its source row. No third-party black box. No methodology you cannot verify.</p>
-      <p class="founder-bio">Secure data handling is built into the engagement design, not bolted on. His MSc research covered cybersecurity in operational environments, grounded in NIST CSF and ISO/IEC 27001 principles. The analytical system is designed with awareness of ISO/IEC 42001 — the AI Management Systems standard — covering transparency, traceability, and responsible automated inference. Client data travels via ProtonDrive, is processed off-site on encrypted hardware, and deleted within 30 days of report delivery for audit-only engagements (retained only for the duration of an active monitoring relationship where that service is engaged).</p>
+      <p class="founder-bio">I hold an MSc in Information Technology (Merit, UWE 2024) and have spent a decade building the analytical layer between complex operational data and decisions that actually get made — starting in freelance web and e-commerce delivery for US clients since 2016, through Azure-backed commercial platforms at Bayside Consult, to NHS operational and digital delivery today. Talos's analysis approach was designed and built entirely in-house: applying standard cost variance calculations per batch and producing a board-ready PDF with every finding traceable to its source row. No third-party black box. No methodology you cannot verify.</p>
+      <p class="founder-bio">Secure data handling is built into the engagement design, not bolted on. My MSc research covered cybersecurity in operational environments, grounded in NIST CSF and ISO/IEC 27001 principles. The analytical system is designed with awareness of ISO/IEC 42001 — the AI Management Systems standard — covering transparency, traceability, and responsible automated inference. Client data travels via ProtonDrive, is processed off-site on encrypted hardware, and deleted within 30 days of report delivery for audit-only engagements (retained only for the duration of an active monitoring relationship where that service is engaged).</p>
       <a href="https://www.linkedin.com/in/emmanuelchiefson/" target="_blank" rel="noopener" class="founder-link">
         LinkedIn profile →
       </a>
