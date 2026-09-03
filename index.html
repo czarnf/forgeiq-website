@@ -1791,14 +1791,14 @@
 
       <span class="slbl" style="display:flex;justify-content:center;">Founding client pricing</span>
       <h2 class="stitle" id="cta-title">Start a margin intelligence partnership.</h2>
-      <p class="sdesc">We're taking on founding clients now — at the lowest price this audit will ever be. A 20-minute Margin Clarity call is the first step. We ask about your production data, your ERP system, and what your biggest margin frustration is. No pitch. We listen first. If we're not the right fit, we tell you.</p>
+      <p class="sdesc">We're taking on founding clients now — at the lowest price this audit will ever be. A 15-minute Margin Clarity call is the first step. We ask about your production data, your ERP system, and what your biggest margin frustration is. No pitch. We listen first. If we're not the right fit, we tell you.</p>
 
       <div class="cta-btns">
         <a href="#" class="btn-p" onclick="Cal('modal',{calLink:TALOS_CAL_LINK});return false;">Book a Margin Clarity Call →</a>
         <a href="mailto:info@talosintelligentsystems.com" class="btn-s">Send a message instead</a>
       </div>
 
-      <p class="cta-small">Free 20-minute call · Remote nationwide · Founding price: £2,500 · Rises after first three clients</p>
+      <p class="cta-small">Free 15-minute call · Remote nationwide · Founding price: £2,500 · Rises after first three clients</p>
 
     </div>
   </div>
@@ -1874,10 +1874,10 @@
       <span class="founder-label">Who built this</span>
       <h2 class="founder-name" id="founder-name">Emmanuel Chiefson</h2>
       <p class="founder-role">Founder &amp; Systems Architect · Talos Intelligent Systems Ltd</p>
-      <p class="founder-creds">MSc Information Technology (Merit · UWE 2024) &nbsp;·&nbsp; BSc Project Management &nbsp;·&nbsp; Microsoft AI Fundamentals. &nbsp;&nbsp; In progress: Microsoft Cloud, AWS Cloud Essentials, Oracle Cloud Associate (training complete, exams pending).</p>
-      <p class="founder-bio">Manufacturing businesses run on data they can't fully see. ERP systems record what happened — quantities, costs, batches. They don't surface the gap between what production actually cost and what it should have. That gap is where margin goes, quietly, batch by batch. I built Talos to find it.</p>
-      <p class="founder-bio">I hold an MSc in Information Technology (Merit, UWE 2024) and have spent a decade building the analytical layer between complex operational data and decisions that actually get made — starting in freelance web and e-commerce delivery for US clients since 2016, through Azure-backed commercial platforms at Bayside Consult, to NHS operational and digital delivery today. Talos's analysis approach was designed and built entirely in-house: applying standard cost variance calculations per batch and producing a board-ready PDF with every finding traceable to its source row. No third-party black box. No methodology you cannot verify.</p>
-      <p class="founder-bio">Secure data handling is built into the engagement design, not bolted on. My MSc research covered cybersecurity in operational environments, grounded in NIST CSF and ISO/IEC 27001 principles. The analytical system is designed with awareness of ISO/IEC 42001 — the AI Management Systems standard — covering transparency, traceability, and responsible automated inference. Client data travels via ProtonDrive, is processed off-site on encrypted hardware, and deleted within 30 days of report delivery for audit-only engagements (retained only for the duration of an active monitoring relationship where that service is engaged).</p>
+      <p class="founder-creds">MSc Information Technology (Merit · UWE 2024) &nbsp;·&nbsp; BSc Project Management &nbsp;·&nbsp; Microsoft AI Fundamentals &nbsp;·&nbsp; In progress: Microsoft Cloud, AWS Cloud Essentials, Oracle Cloud Associate (training complete, exams pending).</p>
+      <p class="founder-bio">Manufacturing businesses run on data they can't fully see. ERP systems record what happened: quantities, costs, batches. They don't surface the gap between what production actually cost and what it should have. That gap is where margin goes, quietly, batch by batch. I built Talos to find it.</p>
+      <p class="founder-bio">I hold an MSc in Information Technology (Merit, UWE 2024) and have spent a decade building the analytical layer between complex operational data and decisions that actually get made: starting in freelance web and e-commerce delivery for US clients since 2016, through Azure-backed commercial platforms at Bayside Consult, to NHS operational and digital delivery today. Talos's analysis approach was designed and built entirely in-house: applying standard cost variance calculations per batch and producing a board-ready PDF with every finding traceable to its source row. No third-party black box. No methodology you cannot verify.</p>
+      <p class="founder-bio">Secure data handling is built into the engagement design, not bolted on. My MSc research covered cybersecurity in operational environments, grounded in NIST CSF and ISO/IEC 27001 principles. The analytical system is designed with awareness of ISO/IEC 42001 (the AI Management Systems standard), covering transparency, traceability, and responsible automated inference. Client data travels via ProtonDrive, is processed off-site on encrypted hardware, and deleted within 30 days of report delivery for audit-only engagements (retained only for the duration of an active monitoring relationship where that service is engaged).</p>
       <a href="https://www.linkedin.com/in/emmanuelchiefson/" target="_blank" rel="noopener" class="founder-link">
         LinkedIn profile →
       </a>
@@ -1924,7 +1924,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Talos Intelligent Systems Ltd · Registered in England and Wales · SIC 62020</p>
+      <p class="footer-copy">© <span id="footer-year">2026</span> Talos Intelligent Systems Ltd · Registered in England and Wales · SIC 62020</p>
       <div class="footer-legal">
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
@@ -1983,6 +1983,10 @@ document.addEventListener('DOMContentLoaded', function() {
     entries.forEach(entry => { if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);} });
   }, { threshold: 0.1 });
   document.querySelectorAll('.rv').forEach(el => revealObserver.observe(el));
+
+  /* Footer year (stays correct without a manual edit each January) */
+  const footerYearEl = document.getElementById('footer-year');
+  if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
 
   /* Mobile nav */
   const burger = document.getElementById('navBurger');
