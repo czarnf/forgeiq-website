@@ -745,7 +745,11 @@
       font-family: 'IBM Plex Mono', monospace;
     }
 
-    @media (min-width: 768px) { .evidence-grid { grid-template-columns: repeat(3,1fr); } }
+    /* Single surviving case study: constrain to a readable measure and centre it,
+       rather than leaving one card stranded in a 3-column track. */
+    @media (min-width: 768px) {
+      .evidence-grid { grid-template-columns: minmax(0, 720px); justify-content: center; }
+    }
 
     /* ═══════════════════════════════════════════════════════════
        FAQ — LIGHT (paper)
